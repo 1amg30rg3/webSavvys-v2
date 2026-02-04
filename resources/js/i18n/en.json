@@ -1,0 +1,162 @@
+{
+  "ui": {
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeToggle": "Theme",
+    "langToggle": "Language"
+  },
+  "hero": {
+    "eyebrow": "Custom Web Development",
+    "title": "We Build Custom Websites & Web Apps Tailored to Your Business",
+    "subtitle": "WebSavvys delivers modern, scalable web solutions designed around your unique needs. Every project is custom-built using cutting-edge technologies — no templates, no shortcuts.",
+    "cta": "Start Your Project",
+    "secondaryCta": "Explore Services",
+    "stackTitle": "Technologies We Use",
+    "stack": [
+      "Laravel",
+      "Vue 3",
+      "TypeScript",
+      "Vite",
+      "Inertia.js",
+      "SCSS",
+      "MYSQL",
+      "PostgreSQL",
+      "Redis"
+    ]
+  },
+  "about": {
+    "title": "What We Do",
+    "text": "WebSavvys is not a generic web service. We create custom-built websites and web applications tailored specifically for your business goals. Every project is unique, designed with modern technologies, clean architecture, and built to scale as you grow. We focus on performance, user experience, and long-term maintainability."
+  },
+  "services": {
+    "title": "Our Services",
+    "description": "Every solution is custom-built, scalable, and designed to meet your specific business requirements.",
+    "items": [
+      {
+        "title": "Custom Web Development",
+        "description": "Fully tailored websites and web applications built from scratch using modern frameworks and best practices."
+      },
+      {
+        "title": "Modern UI/UX Design",
+        "description": "Clean, intuitive interfaces designed for optimal user experience and conversion rates."
+      },
+      {
+        "title": "Responsive & Mobile-First",
+        "description": "Perfectly optimized for all devices — mobile, tablet, laptop, and large screens."
+      },
+      {
+        "title": "Performance Optimization",
+        "description": "Lightning-fast load times, SEO-ready structure, and optimized for search engines and users alike."
+      }
+    ]
+  },
+  "growth": {
+    "title": "Growth & Marketing",
+    "seoTitle": "SEO Optimization",
+    "seoText": "We build websites with SEO best practices from day one. Clean code structure, fast performance, semantic HTML, and content architecture that search engines love. Your site will be ready to rank.",
+    "adsTitle": "Digital Marketing Support",
+    "adsText": "We help you launch targeted ad campaigns on Google and social platforms. From strategy to execution, we ensure your marketing budget brings real results and qualified leads."
+  },
+  "flow": {
+    "title": "How We Work",
+    "subtitle": "A transparent, step-by-step process designed for clarity and results.",
+    "steps": [
+      {
+        "title": "Discovery & Consultation",
+        "description": "We start with an online meeting to understand your business, goals, and project requirements. This is where we align on vision and scope."
+      },
+      {
+        "title": "Planning & Strategy",
+        "description": "We create a detailed project plan, define features, choose the right tech stack, and establish timelines and milestones."
+      },
+      {
+        "title": "UI/UX Design",
+        "description": "Our design phase focuses on creating intuitive, beautiful interfaces. You'll see mockups and prototypes before any code is written."
+      },
+      {
+        "title": "Development",
+        "description": "We build your project using modern, scalable technologies. You'll receive regular updates and have full visibility into progress."
+      },
+      {
+        "title": "Testing & Revisions",
+        "description": "Rigorous testing across devices and browsers. We refine based on your feedback until everything is perfect."
+      },
+      {
+        "title": "Launch & Delivery",
+        "description": "We handle hosting, deployment, and go-live. Your project launches smoothly, and we provide documentation and support."
+      }
+    ]
+  },
+  "payment": {
+    "title": "Payment Terms",
+    "subtitle": "Simple, transparent pricing structure",
+    "advance": {
+      "title": "30% Advance Payment",
+      "description": "Required before project kickoff to secure your spot and begin work"
+    },
+    "final": {
+      "title": "70% Final Payment",
+      "description": "Due upon project completion and delivery, before going live"
+    },
+    "note": "We believe in transparency. You'll know exactly what you're paying for, with no hidden fees or surprise costs."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "q": "How long does a typical project take?",
+        "a": "Project timelines vary based on complexity and scope. A standard website takes 3–6 weeks, while more complex web applications can take 8–12 weeks. Timeline depends on content readiness, feedback speed, and feature requirements."
+      },
+      {
+        "q": "Do I need technical knowledge to work with you?",
+        "a": "Not at all. We handle all technical aspects and explain everything in clear, simple terms. You'll always understand what's happening, what decisions need to be made, and why they matter for your project."
+      },
+      {
+        "q": "Can you work with my existing brand or content?",
+        "a": "Absolutely. We can integrate your existing brand guidelines, content, and visual assets. If you need a fresh look, we can create that too. We adapt to your needs."
+      },
+      {
+        "q": "Will my site be fast and mobile-friendly?",
+        "a": "Yes, guaranteed. Every project is built mobile-first and optimized for performance. We test across all devices and browsers to ensure fast load times, smooth interactions, and excellent user experience everywhere."
+      },
+      {
+        "q": "What happens after the project is delivered?",
+        "a": "You receive full documentation, training if needed, and ongoing support options. We're here to help with updates, maintenance, or future enhancements as your business grows."
+      },
+      {
+        "q": "How do you handle communication during the project?",
+        "a": "We maintain regular communication through your preferred channels — email, WhatsApp, or video calls. You'll receive progress updates, have opportunities for feedback, and can reach us anytime with questions."
+      }
+    ]
+  },
+  "developer": {
+    "title": "Who Will Build Your Project",
+    "subtitle": "Meet Your Developer",
+    "name": "Giorgi Gavasheli",
+    "role": "Full-Stack Web Developer",
+    "bio": "I'm Giorgi, a full-stack developer with 6+ years of experience building custom web solutions for businesses worldwide. I specialize in modern JavaScript frameworks Vue, TypeScript, Laravel, and scalable architecture. I believe in clear communication, clean code, and delivering solutions that actually solve business problems. When you work with me, you're not just getting a developer — you're getting a technical partner who cares about your success.",
+    "experience": "6+ Years Experience",
+    "projects": "50+ Projects Delivered",
+    "technologies": "Modern Tech Stack",
+    "cta": "View My Portfolio",
+    "portfolio": "ggavasheli.com"
+  },
+  "pricing": {
+    "title": "Custom Pricing",
+    "text": "Every project is unique, so pricing is tailored to your specific needs and scope. Contact us for a detailed quote based on your requirements. We'll provide a clear breakdown with no hidden costs."
+  },
+  "contact": {
+    "title": "Let's Build Something Great",
+    "text": "Ready to start your project? Tell us about your idea, and we'll create a custom solution that fits your goals, budget, and timeline. No templates, no compromises — just quality work tailored to you.",
+    "cta": "Send Us an Email",
+    "emailLabel": "Email Us",
+    "chatLabel": "Chat on WhatsApp",
+    "chatMethodLabel": "Live Chat",
+    "chatUrl": "https://wa.me/555219234",
+    "chatCta": "Start a Conversation",
+    "email": "hello@websavvys.com"
+  },
+  "footer": {
+    "note": "WebSavvys — Custom web solutions built for your success."
+  }
+}
