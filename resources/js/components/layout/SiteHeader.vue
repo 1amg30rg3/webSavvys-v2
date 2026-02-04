@@ -34,18 +34,6 @@ const closeMenu = () => {
                     <span class="logo-word-rest">Savvys</span>
                 </span>
             </a>
-            <button
-                class="nav-toggle"
-                type="button"
-                :class="{ 'is-open': isMenuOpen }"
-                :aria-expanded="isMenuOpen"
-                aria-controls="mobile-nav"
-                @click="toggleMenu"
-            >
-                <span class="nav-toggle-bar" />
-                <span class="nav-toggle-bar" />
-                <span class="nav-toggle-bar" />
-            </button>
             <nav class="nav-links" aria-label="Primary">
                 <a href="#services">{{ t('services.title') }}</a>
                 <a href="#flow">{{ t('flow.title') }}</a>
@@ -63,17 +51,36 @@ const closeMenu = () => {
                 <a href="#faq" @click="closeMenu">{{ t('faq.title') }}</a>
                 <a href="#developer" @click="closeMenu">{{ t('developer.title') }}</a>
                 <a href="#contact" @click="closeMenu">{{ t('contact.title') }}</a>
+
+                <div class="header-actions-mobile">
+                    <button class="chip" type="button" @click="onToggleLocale" :aria-label="t('ui.langToggle')">
+                        <font-awesome-icon :icon="['fas', 'globe']" />
+                        {{ localeLabel }}
+                    </button>
+                    <button class="chip" type="button" @click="onToggleTheme" :aria-pressed="isDark"
+                        :aria-label="t('ui.themeToggle')">
+                        <font-awesome-icon :icon="['fas', isDark ? 'moon' : 'sun']" />
+                        {{ isDark ? t('ui.themeDark') : t('ui.themeLight') }}
+                    </button>
+                </div>
             </nav>
             <div class="header-actions">
                 <button class="chip" type="button" @click="onToggleLocale" :aria-label="t('ui.langToggle')">
                     <font-awesome-icon :icon="['fas', 'globe']" />
                     {{ localeLabel }}
                 </button>
-                <button class="chip" type="button" @click="onToggleTheme" :aria-pressed="isDark" :aria-label="t('ui.themeToggle')">
+                <button class="chip" type="button" @click="onToggleTheme" :aria-pressed="isDark"
+                    :aria-label="t('ui.themeToggle')">
                     <font-awesome-icon :icon="['fas', isDark ? 'moon' : 'sun']" />
                     {{ isDark ? t('ui.themeDark') : t('ui.themeLight') }}
                 </button>
             </div>
+            <button class="nav-toggle" type="button" :class="{ 'is-open': isMenuOpen }" :aria-expanded="isMenuOpen"
+                aria-controls="mobile-nav" @click="toggleMenu">
+                <span class="nav-toggle-bar" />
+                <span class="nav-toggle-bar" />
+                <span class="nav-toggle-bar" />
+            </button>
         </div>
     </header>
 </template>

@@ -22,7 +22,7 @@ const { t } = useI18n();
                         </div>
                         <div class="contact-method-info">
                             <h4>{{ t('contact.emailLabel') }}</h4>
-                            <p>{{ t('contact.email') }}</p>
+                            <p>contact@websavvys.com</p>
                         </div>
                     </a>
                     <a class="contact-method" :href="chatUrl" target="_blank" rel="noopener">

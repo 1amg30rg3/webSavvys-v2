@@ -8,7 +8,7 @@
   "hero": {
     "eyebrow": "Custom Web Development",
     "title": "We Build Custom Websites & Web Apps Tailored to Your Business",
-    "subtitle": "WebSavvys delivers modern, scalable web solutions designed around your unique needs. Every project is custom-built using cutting-edge technologies — no templates, no shortcuts.",
+    "subtitle": "WebSavvys delivers modern, scalable web solutions designed around your unique needs. Every project is custom-built using cutting-edge technologies - no templates, no shortcuts.",
     "cta": "Start Your Project",
     "secondaryCta": "Explore Services",
     "stackTitle": "Technologies We Use",
@@ -42,7 +42,7 @@
       },
       {
         "title": "Responsive & Mobile-First",
-        "description": "Perfectly optimized for all devices — mobile, tablet, laptop, and large screens."
+        "description": "Perfectly optimized for all devices - mobile, tablet, laptop, and large screens."
       },
       {
         "title": "Performance Optimization",
@@ -125,7 +125,7 @@
       },
       {
         "q": "How do you handle communication during the project?",
-        "a": "We maintain regular communication through your preferred channels — email, WhatsApp, or video calls. You'll receive progress updates, have opportunities for feedback, and can reach us anytime with questions."
+        "a": "We maintain regular communication through your preferred channels - email, WhatsApp, or video calls. You'll receive progress updates, have opportunities for feedback, and can reach us anytime with questions."
       }
     ]
   },
@@ -134,7 +134,7 @@
     "subtitle": "Meet Your Developer",
     "name": "Giorgi Gavasheli",
     "role": "Full-Stack Web Developer",
-    "bio": "I'm Giorgi, a full-stack developer with 6+ years of experience building custom web solutions for businesses worldwide. I specialize in modern JavaScript frameworks Vue, TypeScript, Laravel, and scalable architecture. I believe in clear communication, clean code, and delivering solutions that actually solve business problems. When you work with me, you're not just getting a developer — you're getting a technical partner who cares about your success.",
+    "bio": "I'm Giorgi, a full-stack developer with 6+ years of experience building custom web solutions for businesses worldwide. I specialize in modern JavaScript frameworks Vue, TypeScript, Laravel, and scalable architecture. I believe in clear communication, clean code, and delivering solutions that actually solve business problems. When you work with me, you're not just getting a developer - you're getting a technical partner who cares about your success.",
     "experience": "6+ Years Experience",
     "projects": "50+ Projects Delivered",
     "technologies": "Modern Tech Stack",
@@ -147,16 +147,15 @@
   },
   "contact": {
     "title": "Let's Build Something Great",
-    "text": "Ready to start your project? Tell us about your idea, and we'll create a custom solution that fits your goals, budget, and timeline. No templates, no compromises — just quality work tailored to you.",
+    "text": "Ready to start your project? Tell us about your idea, and we'll create a custom solution that fits your goals, budget, and timeline. No templates, no compromises - just quality work tailored to you.",
     "cta": "Send Us an Email",
     "emailLabel": "Email Us",
     "chatLabel": "Chat on WhatsApp",
     "chatMethodLabel": "Live Chat",
     "chatUrl": "https://wa.me/555219234",
-    "chatCta": "Start a Conversation",
-    "email": "hello@websavvys.com"
+    "chatCta": "Start a Conversation"
   },
   "footer": {
-    "note": "WebSavvys — Custom web solutions built for your success."
+    "note": "WebSavvys - Custom web solutions built for your success."
   }
 }

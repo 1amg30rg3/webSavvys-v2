@@ -25,7 +25,7 @@ const theme = ref<Theme>('light');
 const portfolioUrl = 'https://ggavasheli.com';
 
 const chatUrl = computed(() => t('contact.chatUrl'));
-const emailLink = computed(() => `mailto:${t('contact.email')}`);
+const emailLink = computed(() => `mailto:contact@websavvys.com`);
 const isDark = computed(() => theme.value === 'dark');
 const localeLabel = computed(() => (locale.value === 'en' ? 'EN' : 'GEO'));
 
