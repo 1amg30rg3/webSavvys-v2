@@ -1,60 +1,61 @@
+// Font Awesome
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import {
+    faArrowRight,
+    faBolt,
+    faCheck,
+    faChartLine,
+    faCode,
+    faCog,
+    faComments,
+    faEnvelope,
+    faGlobe,
+    faHeart,
+    faLightbulb,
+    faMobileAlt,
+    faMoon,
+    faPalette,
+    faQuestionCircle,
+    faRocket,
+    faShieldAlt,
+    faSun,
+    faUsers,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import type { DefineComponent } from 'vue';
 import { createApp, h } from 'vue';
+
 import i18n from './i18n';
 import '../scss/app.scss';
 
-// Font Awesome
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import {
-    faRocket,
-    faCode,
-    faPalette,
-    faMobileAlt,
-    faChartLine,
-    faShieldAlt,
-    faLightbulb,
-    faCog,
-    faUsers,
-    faEnvelope,
-    faComments,
-    faSun,
-    faMoon,
-    faGlobe,
-    faArrowRight,
-    faCheck,
-    faQuestionCircle,
-    faBolt,
-    faHeart,
-} from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
-
 // Add icons to library
 library.add(
-    faRocket,
-    faCode,
-    faPalette,
-    faMobileAlt,
-    faChartLine,
-    faShieldAlt,
-    faLightbulb,
-    faCog,
-    faUsers,
-    faEnvelope,
-    faComments,
-    faSun,
-    faMoon,
-    faGlobe,
     faArrowRight,
-    faCheck,
-    faQuestionCircle,
     faBolt,
-    faHeart,
+    faCheck,
+    faChartLine,
+    faCode,
+    faCog,
+    faComments,
+    faEnvelope,
     faGithub,
+    faGlobe,
+    faHeart,
+    faLightbulb,
     faLinkedin,
+    faMobileAlt,
+    faMoon,
+    faPalette,
+    faQuestionCircle,
+    faRocket,
+    faShieldAlt,
+    faSun,
     faTwitter,
+    faUsers,
 );
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
