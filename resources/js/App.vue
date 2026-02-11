@@ -28,7 +28,7 @@ const chatUrl = computed(() => t('contact.chatUrl'));
 const emailLink = computed(() => `mailto:contact@websavvys.com`);
 const phoneLink = computed(() => `tel:+995555219234`);
 const isDark = computed(() => theme.value === 'dark');
-const localeLabel = computed(() => (locale.value === 'en' ? 'EN' : 'GEO'));
+const localeLabel = computed(() => (locale.value === 'en' ? 'GEO' : 'EN'));
 
 const applyTheme = (value: Theme) => {
     if (typeof document === 'undefined') {

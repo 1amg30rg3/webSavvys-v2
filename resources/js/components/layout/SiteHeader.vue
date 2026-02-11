@@ -94,8 +94,8 @@ onBeforeUnmount(() => {
                     </button>
                     <button class="chip" type="button" @click="onToggleTheme" :aria-pressed="isDark"
                         :aria-label="t('ui.themeToggle')">
-                        <font-awesome-icon :icon="['fas', isDark ? 'moon' : 'sun']" />
-                        {{ isDark ? t('ui.themeDark') : t('ui.themeLight') }}
+                        <font-awesome-icon :icon="['fas', isDark ? 'sun' : 'moon']" />
+                        {{ isDark ? t('ui.themeLight') : t('ui.themeDark') }}
                     </button>
                 </div>
             </nav>
@@ -106,8 +106,8 @@ onBeforeUnmount(() => {
                 </button>
                 <button class="chip" type="button" @click="onToggleTheme" :aria-pressed="isDark"
                     :aria-label="t('ui.themeToggle')">
-                    <font-awesome-icon :icon="['fas', isDark ? 'moon' : 'sun']" />
-                    {{ isDark ? t('ui.themeDark') : t('ui.themeLight') }}
+                    <font-awesome-icon :icon="['fas', isDark ? 'sun' : 'moon']" />
+                    {{ isDark ? t('ui.themeLight') : t('ui.themeDark') }}
                 </button>
             </div>
             <button class="nav-toggle" type="button" :class="{ 'is-open': isMenuOpen }" :aria-expanded="isMenuOpen"
