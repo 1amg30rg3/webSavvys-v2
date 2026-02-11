@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 defineProps<{
@@ -13,6 +13,8 @@ defineProps<{
 const { t } = useI18n();
 
 const isMenuOpen = ref(false);
+const MOBILE_BREAKPOINT = 1600;
+let mediaQuery: MediaQueryList | null = null;
 
 const toggleMenu = () => {
     isMenuOpen.value = !isMenuOpen.value;
@@ -21,6 +23,39 @@ const toggleMenu = () => {
 const closeMenu = () => {
     isMenuOpen.value = false;
 };
+
+const handleMediaChange = () => {
+    if (!mediaQuery?.matches) {
+        isMenuOpen.value = false;
+    }
+};
+
+onMounted(() => {
+    if (typeof window === 'undefined') {
+        return;
+    }
+
+    mediaQuery = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`);
+    handleMediaChange();
+
+    if ('addEventListener' in mediaQuery) {
+        mediaQuery.addEventListener('change', handleMediaChange);
+    } else {
+        mediaQuery.addListener(handleMediaChange);
+    }
+});
+
+onBeforeUnmount(() => {
+    if (!mediaQuery) {
+        return;
+    }
+
+    if ('removeEventListener' in mediaQuery) {
+        mediaQuery.removeEventListener('change', handleMediaChange);
+    } else {
+        mediaQuery.removeListener(handleMediaChange);
+    }
+});
 </script>
 
 <template>

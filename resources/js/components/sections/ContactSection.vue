@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n';
 defineProps<{
     emailLink: string;
     chatUrl: string;
+    phoneLink: string;
 }>();
 
 const { t } = useI18n();
@@ -23,6 +24,15 @@ const { t } = useI18n();
                         <div class="contact-method-info">
                             <h4>{{ t('contact.emailLabel') }}</h4>
                             <p>contact@websavvys.com</p>
+                        </div>
+                    </a>
+                    <a class="contact-method" :href="phoneLink">
+                        <div class="contact-method-icon">
+                            <font-awesome-icon :icon="['fas', 'phone']" />
+                        </div>
+                        <div class="contact-method-info">
+                            <h4>{{ t('contact.phoneLabel') }}</h4>
+                            <p>+995 555 219 234</p>
                         </div>
                     </a>
                     <a class="contact-method" :href="chatUrl" target="_blank" rel="noopener">

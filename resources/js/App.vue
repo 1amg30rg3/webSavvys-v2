@@ -26,6 +26,7 @@ const portfolioUrl = 'https://ggavasheli.com';
 
 const chatUrl = computed(() => t('contact.chatUrl'));
 const emailLink = computed(() => `mailto:contact@websavvys.com`);
+const phoneLink = computed(() => `tel:+995555219234`);
 const isDark = computed(() => theme.value === 'dark');
 const localeLabel = computed(() => (locale.value === 'en' ? 'EN' : 'GEO'));
 
@@ -97,7 +98,7 @@ watch(locale, (value) => {
                 <PricingSection />
                 <FaqSection />
                 <DeveloperSection :portfolio-url="portfolioUrl" />
-                <ContactSection :email-link="emailLink" :chat-url="chatUrl" />
+                <ContactSection :email-link="emailLink" :phone-link="phoneLink" :chat-url="chatUrl" />
             </div>
         </main>
 
