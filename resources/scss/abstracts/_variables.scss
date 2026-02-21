@@ -1,0 +1,51 @@
+// ══════════════════════════════════════════════════════════════════════════════
+// SCSS Variables & CSS Custom Properties
+// ══════════════════════════════════════════════════════════════════════════════
+
+// ── Font Families ─────────────────────────────────────────────────────────────
+$font-body: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+$font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
+
+// ── Color Tokens (Light Theme) ────────────────────────────────────────────────
+$light-bg: #f6f4f0;
+$light-surface: #ffffff;
+$light-text: #161616;
+$light-muted: #5c5c5c;
+$light-border: rgba(18, 18, 18, 0.12);
+
+// ── Color Tokens (Dark Theme) ─────────────────────────────────────────────────
+$dark-bg: #0c0d0f;
+$dark-surface: #16181d;
+$dark-text: #f6f6f6;
+$dark-muted: #b4b8bd;
+$dark-border: rgba(255, 255, 255, 0.12);
+
+// ── Accent Colors ─────────────────────────────────────────────────────────────
+$accent: #ff6a5b;
+$accent-2: #2db4a4;
+$accent-3: #f8c24e;
+
+// ── CSS Custom Properties ─────────────────────────────────────────────────────
+:root {
+    color-scheme: light;
+    --bg: #{$light-bg};
+    --surface: #{$light-surface};
+    --text: #{$light-text};
+    --muted: #{$light-muted};
+    --border: #{$light-border};
+    --accent: #{$accent};
+    --accent-2: #{$accent-2};
+    --accent-3: #{$accent-3};
+    --shadow: 0 20px 50px rgba(20, 20, 20, 0.12);
+}
+
+:root[data-theme='dark'] {
+    color-scheme: dark;
+    --bg: #{$dark-bg};
+    --surface: #{$dark-surface};
+    --text: #{$dark-text};
+    --muted: #{$dark-muted};
+    --border: #{$dark-border};
+    --shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+

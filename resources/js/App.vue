@@ -22,6 +22,7 @@ type Theme = 'light' | 'dark';
 type Locale = 'en' | 'ka';
 
 const theme = ref<Theme>('light');
+const isThemeTransitioning = ref(false);
 const portfolioUrl = 'https://ggavasheli.com';
 
 const chatUrl = computed(() => t('contact.chatUrl'));
@@ -45,7 +46,16 @@ const applyLocale = (value: Locale) => {
 };
 
 const toggleTheme = () => {
-    theme.value = theme.value === 'light' ? 'dark' : 'light';
+    isThemeTransitioning.value = true;
+
+    setTimeout(() => {
+        isThemeTransitioning.value = false;
+    }, 600);
+
+
+    setTimeout(() => {
+        theme.value = theme.value === 'light' ? 'dark' : 'light';
+    }, 300);
 };
 
 const toggleLocale = () => {
@@ -78,7 +88,7 @@ watch(locale, (value) => {
 </script>
 
 <template>
-    <div class="app">
+    <div class="app" :class="{ 'theme-transitioning': isThemeTransitioning }">
         <SiteHeader
             :chat-url="chatUrl"
             :locale-label="localeLabel"

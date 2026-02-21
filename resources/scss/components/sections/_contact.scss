@@ -1,0 +1,182 @@
+// ══════════════════════════════════════════════════════════════════════════════
+// Contact Section
+// ══════════════════════════════════════════════════════════════════════════════
+
+.section-contact {
+    background: linear-gradient(135deg, var(--accent), var(--accent-3));
+    padding: clamp(48px, 6vw, 80px) clamp(24px, 4vw, 48px);
+    margin: 0;
+    color: #1a1a1a;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0 0 50px 50px;
+
+    // Subtle grid overlay
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(26, 26, 26, 0.06) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(26, 26, 26, 0.06) 1px, transparent 1px);
+        background-size: 52px 52px;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    // Blur orb
+    &::before {
+        content: '';
+        position: absolute;
+        top: -40%;
+        right: -15%;
+        width: 520px;
+        height: 520px;
+        background: rgba(255, 255, 255, 0.18);
+        filter: blur(90px);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 0;
+    }
+}
+
+.contact-wrapper {
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+}
+
+.contact-content {
+    .section-title {
+        background: #1a1a1a;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        filter: drop-shadow(0 1px 2px rgba(255, 106, 91, 0.2));
+    }
+}
+
+.contact-description {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin: 0 0 32px;
+    color: rgba(26, 26, 26, 0.7);
+}
+
+// ── Method cards ───────────────────────────────────────────────────────────
+.contact-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+    margin-bottom: 36px;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 0;
+    color: #1a1a1a;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+
+    // Bottom slide-in bar
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-3));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &:hover {
+        background: #ffffff;
+        transform: translateX(4px);
+        box-shadow: -3px 4px 16px rgba(0, 0, 0, 0.1);
+
+        &::after {
+            transform: scaleX(1);
+        }
+
+        .contact-method-icon {
+            background: #1a1a1a;
+
+            svg {
+                color: var(--accent-3);
+            }
+        }
+    }
+}
+
+.contact-method-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 0;
+    background: linear-gradient(135deg, var(--accent), var(--accent-3));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.25s ease;
+
+    svg {
+        font-size: 0.85rem;
+        color: #1a1a1a;
+        transition: color 0.25s ease;
+    }
+}
+
+.contact-method-info {
+    min-width: 0;
+
+    h4 {
+        margin: 0 0 2px;
+        font-family: $font-heading;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(26, 26, 26, 0.45);
+    }
+
+    p {
+        margin: 0;
+        font-family: $font-heading;
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        letter-spacing: -0.01em;
+    }
+}
+
+// ── CTA ───────────────────────────────────────────────────────────────────
+.contact-cta {
+    text-align: center;
+}
+
+.primary-button-large {
+    padding: 18px 40px;
+    font-size: 1rem;
+    background: #1a1a1a;
+    color: #ffffff;
+    border-radius: 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    border: none;
+
+    &:hover {
+        background: #2d2d2d;
+        transform: translateY(-3px);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+    }
+}

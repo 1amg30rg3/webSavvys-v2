@@ -1,0 +1,305 @@
+$font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
+
+// ── Section wrapper ────────────────────────────────────────────────────────
+.section-developer {
+    background: linear-gradient(135deg, rgba(45, 180, 164, 0.05), rgba(255, 106, 91, 0.05));
+    padding: clamp(48px, 6vw, 80px) clamp(24px, 4vw, 48px);
+    margin: 0;
+    border-radius: 50px 50px 0 0;
+}
+
+// ── Two-column grid ────────────────────────────────────────────────────────
+.dev-inner {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: clamp(40px, 6vw, 80px);
+    align-items: start;
+    margin: 0 auto;
+}
+
+// ── LEFT: image column ─────────────────────────────────────────────────────
+.dev-image-col {
+    position: relative;
+}
+
+// Decorative corner brackets
+.dev-corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    z-index: 3;
+
+    &--tl {
+        top: -8px; left: -8px;
+        border-top: 2px solid var(--accent);
+        border-left: 2px solid var(--accent);
+    }
+
+    &--br {
+        bottom: -8px; right: -10px;
+        border-bottom: 2px solid var(--accent);
+        border-right: 2px solid var(--accent);
+    }
+}
+
+.dev-image-wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0;
+
+    &:hover .dev-photo {
+        transform: scale(1.04);
+    }
+}
+
+.dev-photo {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: brightness(0.75) saturate(0.9);
+}
+
+.dev-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 40%,
+        rgba(0,0,0,0.7) 100%
+    );
+    pointer-events: none;
+}
+
+// Stat cards stacked on bottom of image
+.dev-stat-cards {
+    position: absolute;
+    bottom: 70px;
+    left: 0;
+    right: 0;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 2;
+}
+
+.dev-stat-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 14px;
+    background: rgba(10, 10, 10, 0.75);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-left: 2px solid var(--accent);
+    transition: border-color 0.3s ease, background 0.3s ease;
+
+    &:hover {
+        background: rgba(255, 106, 91, 0.15);
+        border-left-color: var(--accent-3);
+    }
+}
+
+.dev-stat-icon {
+    color: var(--accent);
+    font-size: 0.75rem;
+    flex-shrink: 0;
+}
+
+.dev-stat-text {
+    font-family: $font-heading;
+    font-size: 0.78rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), var(--accent-3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.02em;
+}
+
+// Availability badge below image
+.dev-avail-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: var(--surface);
+    border: 1px solid rgba(45, 180, 164, 0.25);
+    font-family: $font-heading;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-2);
+    margin-top: 0;
+    border-top: none;
+}
+
+.dev-avail-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent-2);
+    box-shadow: 0 0 6px var(--accent-2);
+    animation: devDotBlink 2s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+@keyframes devDotBlink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.2; }
+}
+
+// ── RIGHT: info column ─────────────────────────────────────────────────────
+.dev-info-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-top: 8px;
+
+    .section-header {
+        margin-bottom: 0;
+    }
+}
+
+.dev-name-block {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.dev-name {
+    font-family: $font-heading;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 800;
+    margin: 0;
+    background: linear-gradient(135deg, var(--accent), var(--accent-3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 2px 12px rgba(255, 106, 91, 0.3));
+}
+
+.dev-role {
+    margin: 0;
+    color: var(--muted);
+    font-family: $font-heading;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+// Divider rule
+.dev-rule {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dev-rule-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+.dev-rule-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+}
+
+.dev-bio {
+    margin: 0;
+    color: var(--text);
+    line-height: 1.85;
+    font-size: 1rem;
+}
+
+// Skill bars
+.dev-skills {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.dev-skill {
+    display: grid;
+    grid-template-columns: 80px 1fr 36px;
+    align-items: center;
+    gap: 12px;
+}
+
+.dev-skill-label {
+    font-family: $font-heading;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.dev-skill-track {
+    height: 3px;
+    background: var(--border);
+    overflow: hidden;
+}
+
+.dev-skill-fill {
+    height: 100%;
+    width: var(--sw, 80%);
+    background: linear-gradient(90deg, var(--sc, var(--accent)), var(--accent-3));
+    animation: devBarGrow 1s cubic-bezier(0.4, 0, 0.2, 1) var(--sd, 0s) both;
+}
+
+@keyframes devBarGrow {
+    from { width: 0; }
+    to   { width: var(--sw, 80%); }
+}
+
+.dev-skill-pct {
+    font-family: $font-heading;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--muted);
+    text-align: right;
+}
+
+.dev-actions {
+    margin-top: 4px;
+}
+
+// ── Responsive ─────────────────────────────────────────────────────────────
+@media (max-width: 960px) {
+    .dev-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .dev-image-col {
+        max-width: 480px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .dev-photo {
+        height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dev-photo { height: 300px; }
+    .dev-stat-cards { bottom: 64px; padding: 0 10px; }
+}
+
+// ── Reduced motion ─────────────────────────────────────────────────────────
+@media (prefers-reduced-motion: reduce) {
+    .dev-avail-dot,
+    .dev-skill-fill { animation: none !important; }
+    .dev-skill-fill { width: var(--sw, 80%) !important; }
+    .dev-photo      { transition: none !important; }
+}

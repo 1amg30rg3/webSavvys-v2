@@ -1,28 +1,8 @@
-// Font Awesome
+// Font Awesome - Import ALL free icons
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
-import {
-    faArrowRight,
-    faBolt,
-    faCheck,
-    faChartLine,
-    faCode,
-    faCog,
-    faComments,
-    faEnvelope,
-    faGlobe,
-    faHeart,
-    faLightbulb,
-    faMobileAlt,
-    faMoon,
-    faPalette,
-    faPhone,
-    faQuestionCircle,
-    faRocket,
-    faShieldAlt,
-    faSun,
-    faUsers,
-} from '@fortawesome/free-solid-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons'; // All brand icons
+import { far } from '@fortawesome/free-regular-svg-icons'; // All regular icons
+import { fas } from '@fortawesome/free-solid-svg-icons'; // All solid icons
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 import { createInertiaApp } from '@inertiajs/vue3';
@@ -33,32 +13,8 @@ import { createApp, h } from 'vue';
 import i18n from './i18n';
 import '../scss/app.scss';
 
-// Add icons to library
-library.add(
-    faArrowRight,
-    faBolt,
-    faCheck,
-    faChartLine,
-    faCode,
-    faCog,
-    faComments,
-    faEnvelope,
-    faGithub,
-    faGlobe,
-    faHeart,
-    faLightbulb,
-    faLinkedin,
-    faMobileAlt,
-    faMoon,
-    faPalette,
-    faPhone,
-    faQuestionCircle,
-    faRocket,
-    faShieldAlt,
-    faSun,
-    faTwitter,
-    faUsers,
-);
+// Add ALL free FontAwesome icons to library (solid, regular, and brands)
+library.add(fas as any, far as any, fab as any);
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 

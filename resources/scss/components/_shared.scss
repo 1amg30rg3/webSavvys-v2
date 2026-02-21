@@ -1,0 +1,98 @@
+@import '../abstracts/variables';
+
+// ══════════════════════════════════════════════════════════════════════════════
+// Shared Section Components
+// ══════════════════════════════════════════════════════════════════════════════
+
+// ── Section Background ────────────────────────────────────────────────────────
+.section-background-light {
+    background: var(--surface);
+    padding: clamp(48px, 6vw, 80px) clamp(24px, 4vw, 48px);
+}
+
+// ── Section Header ────────────────────────────────────────────────────────────
+.section-header {
+    margin-bottom: 48px;
+
+    h2 {
+        font-family: $font-heading;
+        font-size: clamp(1.6rem, 3vw, 2.4rem);
+        margin: 0 0 12px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        svg {
+            color: var(--accent);
+        }
+    }
+}
+
+.section-title{
+    background: linear-gradient(135deg, var(--accent), var(--accent-3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 1px 2px rgba(255, 106, 91, 0.25));
+}
+
+.section-text {
+    max-width: 640px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin: 0;
+}
+
+// ── Section Eyebrow ───────────────────────────────────────────────────────────
+.section-eyebrow-wrapper {
+    text-align: left;
+}
+
+.section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, rgba(255, 106, 91, 0.1), rgba(248, 194, 78, 0.1));
+    border: 1px solid rgba(255, 106, 91, 0.2);
+    border-radius: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 0;
+    margin-bottom: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(255, 106, 91, 0.15);
+
+    svg {
+        font-size: 0.875rem;
+        transition: transform 0.3s ease;
+    }
+
+    &:hover {
+        background: linear-gradient(135deg, rgba(255, 106, 91, 0.15), rgba(248, 194, 78, 0.15));
+        border-color: var(--accent);
+        box-shadow: 0 4px 12px rgba(255, 106, 91, 0.25);
+        transform: translateY(-1px);
+
+        svg {
+            transform: scale(1.1) rotate(5deg);
+        }
+    }
+
+    &-light {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.2);
+        color: rgba(246, 246, 246, 0.9);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+    }
+}
+

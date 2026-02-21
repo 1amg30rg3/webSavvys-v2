@@ -12,6 +12,14 @@
     "cta": "Start Your Project",
     "secondaryCta": "Explore Services",
     "stackTitle": "Technologies We Use",
+    "visual": {
+      "coordStack": "WS / STACK",
+      "projects": "Projects",
+      "perfScore": "Perf Score",
+      "rated": "Rated",
+      "techStack": "Tech Stack",
+      "availableForProjects": "Available for new projects"
+    },
     "stack": [
       "Laravel",
       "Vue 3",
@@ -25,10 +33,38 @@
     ]
   },
   "about": {
+    "eyebrow": "About Us",
     "title": "What We Do",
-    "text": "WebSavvys is not a generic web service. We create custom-built websites and web applications tailored specifically for your business goals. Every project is unique, designed with modern technologies, clean architecture, and built to scale as you grow. We focus on performance, user experience, and long-term maintainability."
+    "text": "WebSavvys is not a generic web service. We create custom-built websites and web applications tailored specifically for your business goals. Every project is unique, designed with modern technologies, clean architecture, and built to scale as you grow. We focus on performance, user experience, and long-term maintainability.",
+    "tags": {
+      "performanceFirst": "Performance First",
+      "cleanArchitecture": "Clean Architecture",
+      "scalableSystems": "Scalable Systems",
+      "uxDriven": "UX Driven",
+      "longTermSupport": "Long-term Support"
+    },
+    "metrics": {
+      "coordBuild": "WS / BUILD",
+      "perfScore": "Perf Score",
+      "avgLoad": "AVG Load",
+      "delivered": "Delivered",
+      "stack": "Stack",
+      "stackValueTop": "Laravel",
+      "stackValueBottom": "VueJS",
+      "architecture": "Architecture",
+      "architectureValue": "Clean & Scalable",
+      "live": "Live",
+      "uptime": "Uptime",
+      "built": "Built",
+      "builtValueTop": "No",
+      "builtValueBottom": "Templates",
+      "uxScore": "UX Score",
+      "maintainability": "Maintainability",
+      "maintainabilityValue": "Long-term Ready"
+    }
   },
   "services": {
+    "eyebrow": "What We Offer",
     "title": "Our Services",
     "description": "Every solution is custom-built, scalable, and designed to meet your specific business requirements.",
     "items": [
@@ -51,6 +87,7 @@
     ]
   },
   "growth": {
+    "eyebrow": "Digital Growth",
     "title": "Growth & Marketing",
     "seoTitle": "SEO Optimization",
     "seoText": "We build websites with SEO best practices from day one. Clean code structure, fast performance, semantic HTML, and content architecture that search engines love. Your site will be ready to rank.",
@@ -58,6 +95,7 @@
     "adsText": "We help you launch targeted ad campaigns on Google and social platforms. From strategy to execution, we ensure your marketing budget brings real results and qualified leads."
   },
   "flow": {
+    "eyebrow": "Our Process",
     "title": "How We Work",
     "subtitle": "A transparent, step-by-step process designed for clarity and results.",
     "steps": [
@@ -88,6 +126,7 @@
     ]
   },
   "payment": {
+    "eyebrow": "Transparent Pricing",
     "title": "Payment Terms",
     "subtitle": "Simple, transparent pricing structure",
     "advance": {
@@ -101,6 +140,7 @@
     "note": "We believe in transparency. You'll know exactly what you're paying for, with no hidden fees or surprise costs."
   },
   "faq": {
+    "eyebrow": "Got Questions?",
     "title": "Frequently Asked Questions",
     "items": [
       {
@@ -142,10 +182,34 @@
     "portfolio": "ggavasheli.com"
   },
   "pricing": {
+    "eyebrow": "Investment",
     "title": "Custom Pricing",
-    "text": "Every project is unique, so pricing is tailored to your specific needs and scope. Contact us for a detailed quote based on your requirements. We'll provide a clear breakdown with no hidden costs."
+    "text": "Every project is unique, so pricing is tailored to your specific needs and scope. Contact us for a detailed quote based on your requirements. We'll provide a clear breakdown with no hidden costs.",
+    "highlights": {
+      "noHiddenFees": "No hidden fees, ever",
+      "milestonePayments": "Milestone-based payments",
+      "scopeOrRetainer": "Fixed-scope or retainer options",
+      "discoveryCall": "Free discovery call included"
+    },
+    "metrics": {
+      "coordPricing": "WS / PRICING",
+      "paymentStructure": "Payment Structure",
+      "upfront": "30% Upfront",
+      "onDelivery": "70% on Delivery",
+      "launch": "Launch",
+      "days": "days",
+      "fixedPrice": "Fixed Price",
+      "always": "Always",
+      "revisions": "Revisions",
+      "whatsIncluded": "What's included",
+      "includedValue": "Design + Dev + Deploy",
+      "afterLaunch": "After launch",
+      "afterLaunchValue": "30-day Support",
+      "acceptingProjects": "Accepting new projects"
+    }
   },
   "contact": {
+    "eyebrow": "Let's Talk",
     "title": "Let's Build Something Great",
     "text": "Ready to start your project? Tell us about your idea, and we'll create a custom solution that fits your goals, budget, and timeline. No templates, no compromises - just quality work tailored to you.",
     "cta": "Send Us an Email",

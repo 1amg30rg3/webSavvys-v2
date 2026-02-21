@@ -1,0 +1,473 @@
+$font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
+
+// ── Layout ─────────────────────────────────────────────────────────────────
+.pricing-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 96px);
+    align-items: center;
+}
+
+// ── Left ───────────────────────────────────────────────────────────────────
+.pricing-content {
+    max-width: 480px;
+
+    .section-header {
+        margin-bottom: 28px;
+    }
+}
+
+.pricing-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.p-highlight {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--muted);
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: var(--text);
+    }
+}
+
+.p-highlight-icon {
+    color: var(--accent);
+    font-size: 0.7rem;
+    flex-shrink: 0;
+}
+
+// ── Right wrapper ──────────────────────────────────────────────────────────
+.pricing-grid-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    justify-self: end;
+    border: 1px solid var(--border);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    // Height driven by content, not fixed aspect-ratio
+}
+
+// Grid lines bg
+.pgrid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+}
+
+// Scan line
+.pgrid-scan {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-2), transparent);
+    opacity: 0.3;
+    animation: pScan 5s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes pScan {
+    0%   { top: 0;    opacity: 0; }
+    4%   { opacity: 0.3; }
+    96%  { opacity: 0.3; }
+    100% { top: 100%; opacity: 0; }
+}
+
+// Corner labels
+.pgrid-coord {
+    position: absolute;
+    font-family: $font-heading;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    opacity: 0.45;
+    text-transform: uppercase;
+    z-index: 2;
+
+    &--tl { top: 8px;    left: 10px; }
+    &--br { bottom: 8px; right: 10px; }
+}
+
+// Floating badge
+.pgrid-badge {
+    position: absolute;
+    top: 32px;
+    right: -18px;
+    z-index: 10;
+    background: var(--surface);
+    border: 1px solid rgba(45, 180, 164, 0.35);
+    box-shadow: 0 8px 24px rgba(45, 180, 164, 0.15);
+    padding: 10px 16px;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    animation: pFloat 3.2s ease-in-out infinite;
+
+    strong {
+        display: block;
+        font-family: $font-heading;
+        font-size: 22px;
+        font-weight: 800;
+        color: var(--accent-2);
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+        margin-top: 2px;
+    }
+}
+
+@keyframes pFloat {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-7px); }
+}
+
+// ── Inner content ──────────────────────────────────────────────────────────
+.pgrid-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 14px; // clear corner label
+}
+
+// Payment split card
+.pgrid-split-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 16px 18px;
+    transition: border-color 0.3s ease;
+
+    &:hover {
+        border-color: var(--accent);
+    }
+}
+
+.pgrid-split-label {
+    font-family: $font-heading;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+}
+
+.pgrid-split-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pgrid-split-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 28px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    position: relative;
+}
+
+.pgrid-split-fill {
+    height: 100%;
+    width: var(--w, 50%);
+    animation: pBarPulse 3s ease-in-out infinite alternate;
+    flex-shrink: 0;
+}
+
+@keyframes pBarPulse {
+    from { opacity: 0.7; }
+    to   { opacity: 1; }
+}
+
+.pgrid-split-text {
+    position: absolute;
+    left: 12px;
+    font-family: $font-heading;
+    font-size: 10px;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    mix-blend-mode: difference;
+    filter: invert(1);
+}
+
+// Row of stat cards
+.pgrid-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+
+    &--2col {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.pgrid-stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 14px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    animation: pStatPulse 5s ease-in-out var(--p-delay, 0s) infinite;
+    cursor: default;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 60%);
+        pointer-events: none;
+    }
+
+    &:hover {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 1px var(--accent), 0 8px 20px rgba(255, 106, 91, 0.1);
+        z-index: 3;
+    }
+}
+
+@keyframes pStatPulse {
+    0%, 100% { border-color: var(--border); }
+    50%       { border-color: var(--p-color, rgba(255,106,91,0.25)); }
+}
+
+.pgrid-stat-icon {
+    font-size: 16px;
+    margin-bottom: 4px;
+    line-height: 1;
+}
+
+.pgrid-stat-label {
+    font-family: $font-heading;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+}
+
+.pgrid-stat-val {
+    font-family: $font-heading;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    display: flex;
+    align-items: baseline;
+    gap: 3px;
+}
+
+.pgrid-stat-unit {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+}
+
+// Wide cards (2-col row)
+.pgrid-wide {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 14px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    animation: pStatPulse 5s ease-in-out var(--p-delay, 0s) infinite;
+    cursor: default;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 60%);
+        pointer-events: none;
+    }
+
+    &:hover {
+        border-color: var(--accent-2);
+        box-shadow: 0 0 0 1px var(--accent-2), 0 8px 20px rgba(45, 180, 164, 0.1);
+        z-index: 3;
+    }
+}
+
+.pgrid-wide-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.pgrid-wide-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.pgrid-wide-val {
+    font-family: $font-heading;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// Progress bar
+.pgrid-prog {
+    height: 2px;
+    background: var(--border);
+    margin-top: 7px;
+    overflow: hidden;
+}
+
+.pgrid-prog-fill {
+    height: 100%;
+    animation: pProgAnim var(--pdur, 3s) ease-in-out var(--pdel, 0s) infinite alternate;
+}
+
+@keyframes pProgAnim {
+    from { width: var(--from, 40%); }
+    to   { width: var(--to, 90%); }
+}
+
+// Live strip at bottom
+.pgrid-live-strip {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin-top: 2px;
+}
+
+.pgrid-live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent-2);
+    box-shadow: 0 0 7px var(--accent-2);
+    flex-shrink: 0;
+    animation: pDotBlink 2s ease-in-out infinite;
+}
+
+@keyframes pDotBlink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.2; }
+}
+
+.pgrid-live-text {
+    font-family: $font-heading;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-2);
+    flex: 1;
+}
+
+.pgrid-stream {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.pgrid-sdot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--accent-2);
+    opacity: 0;
+    animation: pStreamFlow 2.4s linear var(--sd, 0s) infinite;
+}
+
+@keyframes pStreamFlow {
+    0%   { opacity: 0; transform: translateX(-5px); }
+    15%  { opacity: 0.6; }
+    85%  { opacity: 0.6; }
+    100% { opacity: 0; transform: translateX(5px); }
+}
+
+// ── Dark theme ─────────────────────────────────────────────────────────────
+:root[data-theme='dark'] .pgrid-badge {
+    background: #16181d;
+}
+
+// ── Responsive ─────────────────────────────────────────────────────────────
+@media (max-width: 900px) {
+    .pricing-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-grid-wrap {
+        max-width: 440px;
+        justify-self: center;
+    }
+
+    .pgrid-badge {
+        right: -8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pricing-grid-wrap {
+        max-width: 340px;
+        padding: 14px;
+    }
+
+    .pgrid-stat-val  { font-size: 15px; }
+    .pgrid-wide-val  { font-size: 11px; }
+    .pgrid-stat-icon { font-size: 14px; }
+    .pgrid-wide-icon { font-size: 17px; }
+    .pgrid-row--2col { grid-template-columns: 1fr; }
+}
+
+// ── Reduced motion ─────────────────────────────────────────────────────────
+@media (prefers-reduced-motion: reduce) {
+    .pgrid-scan,
+    .pgrid-badge,
+    .pgrid-split-fill,
+    .pgrid-stat,
+    .pgrid-wide,
+    .pgrid-prog-fill,
+    .pgrid-live-dot,
+    .pgrid-sdot {
+        animation: none !important;
+    }
+
+    .pgrid-prog-fill { width: var(--to, 80%) !important; }
+    .pgrid-live-dot  { opacity: 1 !important; }
+}

@@ -111,10 +111,13 @@ onBeforeUnmount(() => {
                 </button>
             </div>
             <button class="nav-toggle" type="button" :class="{ 'is-open': isMenuOpen }" :aria-expanded="isMenuOpen"
-                aria-controls="mobile-nav" @click="toggleMenu">
-                <span class="nav-toggle-bar" />
-                <span class="nav-toggle-bar" />
-                <span class="nav-toggle-bar" />
+                aria-controls="mobile-nav" aria-label="Toggle navigation menu" @click="toggleMenu">
+                <span class="sr-only">Toggle navigation menu</span>
+                <span class="nav-toggle-icon" aria-hidden="true">
+                    <span class="nav-toggle-bar" />
+                    <span class="nav-toggle-bar" />
+                    <span class="nav-toggle-bar" />
+                </span>
             </button>
         </div>
     </header>

@@ -1,0 +1,157 @@
+// ══════════════════════════════════════════════════════════════════════════════
+// Responsive Media Queries
+// ══════════════════════════════════════════════════════════════════════════════
+
+// ── 1600px Breakpoint ─────────────────────────────────────────────────────────
+@media (max-width: 1600px) {
+    .nav-links,
+    .header-actions {
+        display: none;
+    }
+
+    .nav-toggle {
+        display: inline-flex;
+    }
+}
+
+// ── 900px Breakpoint ──────────────────────────────────────────────────────────
+@media (max-width: 900px) {
+    section{
+        margin: 80px 0;
+    }
+
+    .section-developer,
+    .section-contact {
+        margin: 0;
+    }
+
+    .about-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .about-grid-wrap {
+        max-width: 420px;
+        justify-self: center;
+
+        .float-badge {
+            right: -8px;
+        }
+    }
+}
+
+// ── 768px Breakpoint ──────────────────────────────────────────────────────────
+@media (max-width: 768px) {
+    .header-actions {
+        display: none;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .payment-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .developer-card {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-methods {
+        grid-template-columns: 1fr;
+    }
+}
+
+// ── 480px Breakpoint ──────────────────────────────────────────────────────────
+@media (max-width: 480px) {
+    .nav-toggle {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+    }
+
+    .nav-toggle-icon {
+        width: 20px;
+        height: 14px;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .chip {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+
+    .primary-button,
+    .ghost-button {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .flow-step-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .flow-step-number {
+        margin: 0 auto 16px;
+    }
+
+    .payment-percentage {
+        font-size: 3rem;
+    }
+
+    .about-grid-wrap {
+        max-width: 340px;
+    }
+
+    .m-value { font-size: 16px; }
+    .m-icon  { font-size: 15px; }
+    .m-icon--lg { font-size: 20px; }
+}
+
+// ── Larger Screens (Developer Card) ──────────────────────────────────────────
+@media (min-width: 768px) {
+    .developer-card {
+        grid-template-columns: 400px 1fr;
+        align-items: start;
+    }
+}
+
+// ── Reduced Motion ────────────────────────────────────────────────────────────
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .m-bar-fill {
+        width: var(--to, 80%) !important;
+    }
+
+    .m-dot {
+        opacity: 1 !important;
+    }
+}
