@@ -23,13 +23,8 @@ const toggleFaq = (index: number) => {
             </p>
             <h2 class="section-title">{{ t('faq.title') }}</h2>
         </div>
-        <div class="faq-accordion" data-animate="fade-up" data-delay="80">
-            <div
-                v-for="(item, index) in faqItems"
-                :key="item.q"
-                class="faq-accordion-item"
-                :class="{ 'is-open': openFaqIndex === index }"
-            >
+        <div class="faq-accordion stagger-children">
+            <div v-for="(item, index) in faqItems" :key="item.q" class="faq-accordion-item" :class="{ 'is-open': openFaqIndex === index }">
                 <button class="faq-question" @click="toggleFaq(index)" type="button">
                     <span>
                         <font-awesome-icon :icon="['fa-regular', 'fa-circle']" />

@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useScrollAnimation } from '@/composables/useScrollAnimation';
+import { vTilt } from '@/composables/useTilt';
 
 const { t, tm } = useI18n();
 const { sectionRef } = useScrollAnimation();
@@ -20,7 +21,14 @@ const flowSteps = computed(() => (tm('flow.steps') as Array<{ title: string; des
             <p class="section-text">{{ t('flow.subtitle') }}</p>
         </div>
         <div class="flow-timeline">
-            <div v-for="(step, index) in flowSteps" :key="`flow-step-${index}`" class="flow-step-card" data-animate="fade-up" :data-delay="index * 100">
+            <div
+                v-for="(step, index) in flowSteps"
+                :key="`flow-step-${index}`"
+                class="flow-step-card"
+                v-tilt
+                data-animate="fade-up"
+                :data-delay="index * 100"
+            >
                 <div class="flow-step-number">{{ index + 1 }}</div>
                 <div class="flow-step-content">
                     <h3>{{ step.title }}</h3>

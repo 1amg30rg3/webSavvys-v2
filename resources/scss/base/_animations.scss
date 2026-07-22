@@ -87,36 +87,74 @@
 }
 
 @keyframes scanBeam {
-    0%   { top: 0;    opacity: 0; }
-    4%   { opacity: 0.35; }
-    96%  { opacity: 0.35; }
-    100% { top: 100%; opacity: 0; }
+    0% {
+        top: 0;
+        opacity: 0;
+    }
+    4% {
+        opacity: 0.35;
+    }
+    96% {
+        opacity: 0.35;
+    }
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
 }
 
 @keyframes aboutFloatY {
-    0%, 100% { transform: translateY(0); }
-    50%       { transform: translateY(-6px); }
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
 }
 
 @keyframes mCardPulse {
-    0%, 100% { border-color: var(--border); }
-    50%       { border-color: var(--pulse-color, rgba(255, 106, 91, 0.25)); }
+    0%,
+    100% {
+        border-color: var(--border);
+    }
+    50% {
+        border-color: var(--pulse-color, rgba(255, 106, 91, 0.25));
+    }
 }
 
 @keyframes mBarAnim {
-    from { width: var(--from, 40%); }
-    to   { width: var(--to, 90%); }
+    from {
+        width: var(--from, 40%);
+    }
+    to {
+        width: var(--to, 90%);
+    }
 }
 
 @keyframes mDotBlink {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0.25; }
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.25;
+    }
 }
 
 @keyframes mStreamFlow {
-    0%   { opacity: 0; transform: translateX(-8px); }
-    15%  { opacity: 0.55; }
-    85%  { opacity: 0.55; }
-    100% { opacity: 0; transform: translateX(8px); }
+    0% {
+        opacity: 0;
+        transform: translateX(-8px);
+    }
+    15% {
+        opacity: 0.55;
+    }
+    85% {
+        opacity: 0.55;
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(8px);
+    }
 }
-

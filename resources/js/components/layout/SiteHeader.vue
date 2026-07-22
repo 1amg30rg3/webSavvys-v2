@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useActiveSection } from '@/composables/useActiveSection';
 
 defineProps<{
     localeLabel: string;
@@ -13,8 +14,17 @@ defineProps<{
 const { t } = useI18n();
 
 const isMenuOpen = ref(false);
-const MOBILE_BREAKPOINT = 1600;
+// Wider than the 1600px content container cap (see _reset.scss `.container`) so
+// desktop nav only shows once there's genuinely enough room for icon+text links
+// plus the locale/theme actions — avoids them wrapping onto their own line.
+const MOBILE_BREAKPOINT = 1750;
 let mediaQuery: MediaQueryList | null = null;
+
+const { activeId } = useActiveSection(['services', 'flow', 'payment', 'faq', 'contact']);
+
+const isScrolled = ref(false);
+const isHeaderHidden = ref(false);
+let lastScrollY = 0;
 
 const toggleMenu = () => {
     isMenuOpen.value = !isMenuOpen.value;
@@ -30,6 +40,21 @@ const handleMediaChange = () => {
     }
 };
 
+const handleScroll = () => {
+    const currentY = window.scrollY;
+    isScrolled.value = currentY > 24;
+
+    if (isMenuOpen.value || currentY < 120) {
+        isHeaderHidden.value = false;
+    } else if (currentY > lastScrollY + 4) {
+        isHeaderHidden.value = true;
+    } else if (currentY < lastScrollY - 4) {
+        isHeaderHidden.value = false;
+    }
+
+    lastScrollY = currentY;
+};
+
 onMounted(() => {
     if (typeof window === 'undefined') {
         return;
@@ -43,6 +68,9 @@ onMounted(() => {
     } else {
         mediaQuery.addListener(handleMediaChange);
     }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
 });
 
 onBeforeUnmount(() => {
@@ -55,14 +83,16 @@ onBeforeUnmount(() => {
     } else {
         mediaQuery.removeListener(handleMediaChange);
     }
+
+    window.removeEventListener('scroll', handleScroll);
 });
 </script>
 
 <template>
-    <header class="site-header">
-        <div class="container site-header-inner">
+    <header class="site-header" :class="{ 'is-scrolled': isScrolled, 'is-hidden': isHeaderHidden }">
+        <div class="site-header-inner container">
             <a class="logo" href="#hero" aria-label="WebSavvys">
-                <font-awesome-icon :icon="['fa', 'rocket']" />
+                <font-awesome-icon :icon="['fas', 'rocket']" />
 
                 <span class="logo-word">
                     <span class="logo-word-accent">Web</span>
@@ -70,30 +100,71 @@ onBeforeUnmount(() => {
                 </span>
             </a>
             <nav class="nav-links" aria-label="Primary">
-                <a href="#services">{{ t('services.title') }}</a>
-                <a href="#flow">{{ t('flow.title') }}</a>
-                <a href="#payment">{{ t('payment.title') }}</a>
-                <a href="#faq">{{ t('faq.title') }}</a>
-                <a href="#contact">{{ t('contact.title') }}</a>
+                <a href="#services" :class="{ 'is-active': activeId === 'services' }">
+                    <font-awesome-icon :icon="['fas', 'layer-group']" />
+                    {{ t('services.title') }}
+                </a>
+                <a href="#flow" :class="{ 'is-active': activeId === 'flow' }">
+                    <font-awesome-icon :icon="['fas', 'route']" />
+                    {{ t('flow.title') }}
+                </a>
+                <a href="#payment" :class="{ 'is-active': activeId === 'payment' }">
+                    <font-awesome-icon :icon="['fas', 'credit-card']" />
+                    {{ t('payment.title') }}
+                </a>
+                <a href="#faq" :class="{ 'is-active': activeId === 'faq' }">
+                    <font-awesome-icon :icon="['fas', 'question-circle']" />
+                    {{ t('faq.title') }}
+                </a>
+                <a href="#contact" :class="{ 'is-active': activeId === 'contact' }">
+                    <font-awesome-icon :icon="['fas', 'paper-plane']" />
+                    {{ t('contact.title') }}
+                </a>
             </nav>
             <nav id="mobile-nav" class="mobile-nav" :class="{ 'is-open': isMenuOpen }" aria-label="Mobile">
-                <a href="#about" @click="closeMenu">{{ t('about.title') }}</a>
-                <a href="#services" @click="closeMenu">{{ t('services.title') }}</a>
-                <a href="#growth" @click="closeMenu">{{ t('growth.title') }}</a>
-                <a href="#flow" @click="closeMenu">{{ t('flow.title') }}</a>
-                <a href="#payment" @click="closeMenu">{{ t('payment.title') }}</a>
-                <a href="#pricing" @click="closeMenu">{{ t('pricing.title') }}</a>
-                <a href="#faq" @click="closeMenu">{{ t('faq.title') }}</a>
-                <a href="#developer" @click="closeMenu">{{ t('developer.title') }}</a>
-                <a href="#contact" @click="closeMenu">{{ t('contact.title') }}</a>
+                <a href="#about" @click="closeMenu">
+                    <font-awesome-icon :icon="['fas', 'info-circle']" />
+                    {{ t('about.title') }}
+                </a>
+                <a href="#services" @click="closeMenu">
+                    <font-awesome-icon :icon="['fas', 'layer-group']" />
+                    {{ t('services.title') }}
+                </a>
+                <a href="#growth" @click="closeMenu">
+                    <font-awesome-icon :icon="['fas', 'chart-line']" />
+                    {{ t('growth.title') }}
+                </a>
+                <a href="#flow" @click="closeMenu">
+                    <font-awesome-icon :icon="['fas', 'route']" />
+                    {{ t('flow.title') }}
+                </a>
+                <a href="#payment" @click="closeMenu">
+                    <font-awesome-icon :icon="['fas', 'credit-card']" />
+                    {{ t('payment.title') }}
+                </a>
+                <a href="#pricing" @click="closeMenu">
+                    <font-awesome-icon :icon="['fas', 'tag']" />
+                    {{ t('pricing.title') }}
+                </a>
+                <a href="#faq" @click="closeMenu">
+                    <font-awesome-icon :icon="['fas', 'question-circle']" />
+                    {{ t('faq.title') }}
+                </a>
+                <a href="#developer" @click="closeMenu">
+                    <font-awesome-icon :icon="['fas', 'user']" />
+                    {{ t('developer.title') }}
+                </a>
+                <a href="#contact" @click="closeMenu">
+                    <font-awesome-icon :icon="['fas', 'paper-plane']" />
+                    {{ t('contact.title') }}
+                </a>
 
                 <div class="header-actions-mobile">
                     <button class="chip" type="button" @click="onToggleLocale" :aria-label="t('ui.langToggle')">
                         <font-awesome-icon :icon="['fas', 'globe']" />
                         {{ localeLabel }}
                     </button>
-                    <button class="chip" type="button" @click="onToggleTheme" :aria-pressed="isDark"
-                        :aria-label="t('ui.themeToggle')">
+                    <button class="chip" type="button" @click="onToggleTheme" :aria-pressed="isDark" :aria-label="t('ui.themeToggle')">
                         <font-awesome-icon :icon="['fas', isDark ? 'sun' : 'moon']" />
                         {{ isDark ? t('ui.themeLight') : t('ui.themeDark') }}
                     </button>
@@ -104,14 +175,20 @@ onBeforeUnmount(() => {
                     <font-awesome-icon :icon="['fas', 'globe']" />
                     {{ localeLabel }}
                 </button>
-                <button class="chip" type="button" @click="onToggleTheme" :aria-pressed="isDark"
-                    :aria-label="t('ui.themeToggle')">
+                <button class="chip" type="button" @click="onToggleTheme" :aria-pressed="isDark" :aria-label="t('ui.themeToggle')">
                     <font-awesome-icon :icon="['fas', isDark ? 'sun' : 'moon']" />
                     {{ isDark ? t('ui.themeLight') : t('ui.themeDark') }}
                 </button>
             </div>
-            <button class="nav-toggle" type="button" :class="{ 'is-open': isMenuOpen }" :aria-expanded="isMenuOpen"
-                aria-controls="mobile-nav" aria-label="Toggle navigation menu" @click="toggleMenu">
+            <button
+                class="nav-toggle"
+                type="button"
+                :class="{ 'is-open': isMenuOpen }"
+                :aria-expanded="isMenuOpen"
+                aria-controls="mobile-nav"
+                aria-label="Toggle navigation menu"
+                @click="toggleMenu"
+            >
                 <span class="sr-only">Toggle navigation menu</span>
                 <span class="nav-toggle-icon" aria-hidden="true">
                     <span class="nav-toggle-bar" />

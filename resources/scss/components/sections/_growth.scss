@@ -19,10 +19,27 @@
     overflow: hidden;
     cursor: pointer;
 
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent-2), var(--accent-3));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+
     &:hover {
         transform: translateY(-4px);
         box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
         border-color: var(--accent);
+
+        &::before {
+            transform: scaleX(1);
+        }
 
         h3 svg {
             transform: scale(1.15) rotate(-5deg);
@@ -64,4 +81,3 @@
         transition: all 0.3s ease;
     }
 }
-

@@ -30,13 +30,15 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
     z-index: 3;
 
     &--tl {
-        top: -8px; left: -8px;
+        top: -8px;
+        left: -8px;
         border-top: 2px solid var(--accent);
         border-left: 2px solid var(--accent);
     }
 
     &--br {
-        bottom: -8px; right: -10px;
+        bottom: -8px;
+        right: -10px;
         border-bottom: 2px solid var(--accent);
         border-right: 2px solid var(--accent);
     }
@@ -65,11 +67,7 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
 .dev-image-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        to bottom,
-        transparent 40%,
-        rgba(0,0,0,0.7) 100%
-    );
+    background: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, 0.7) 100%);
     pointer-events: none;
 }
 
@@ -95,7 +93,9 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-left: 2px solid var(--accent);
-    transition: border-color 0.3s ease, background 0.3s ease;
+    transition:
+        border-color 0.3s ease,
+        background 0.3s ease;
 
     &:hover {
         background: rgba(255, 106, 91, 0.15);
@@ -149,8 +149,13 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
 }
 
 @keyframes devDotBlink {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0.2; }
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
 }
 
 // ── RIGHT: info column ─────────────────────────────────────────────────────
@@ -258,8 +263,12 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
 }
 
 @keyframes devBarGrow {
-    from { width: 0; }
-    to   { width: var(--sw, 80%); }
+    from {
+        width: 0;
+    }
+    to {
+        width: var(--sw, 80%);
+    }
 }
 
 .dev-skill-pct {
@@ -292,14 +301,25 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
 }
 
 @media (max-width: 480px) {
-    .dev-photo { height: 300px; }
-    .dev-stat-cards { bottom: 64px; padding: 0 10px; }
+    .dev-photo {
+        height: 300px;
+    }
+    .dev-stat-cards {
+        bottom: 64px;
+        padding: 0 10px;
+    }
 }
 
 // ── Reduced motion ─────────────────────────────────────────────────────────
 @media (prefers-reduced-motion: reduce) {
     .dev-avail-dot,
-    .dev-skill-fill { animation: none !important; }
-    .dev-skill-fill { width: var(--sw, 80%) !important; }
-    .dev-photo      { transition: none !important; }
+    .dev-skill-fill {
+        animation: none !important;
+    }
+    .dev-skill-fill {
+        width: var(--sw, 80%) !important;
+    }
+    .dev-photo {
+        transition: none !important;
+    }
 }

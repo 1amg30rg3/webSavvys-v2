@@ -41,6 +41,18 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            'seoDefaults' => [
+                'url' => config('seo.url'),
+                'siteName' => config('seo.site_name'),
+                'twitterHandle' => config('seo.twitter_handle'),
+                'defaultImage' => config('seo.default_image'),
+                'defaultImageWidth' => config('seo.default_image_width'),
+                'defaultImageHeight' => config('seo.default_image_height'),
+                'organization' => config('seo.organization'),
+                'social' => config('seo.social'),
+                'locales' => config('seo.locales'),
+                'defaultLocale' => config('seo.default_locale'),
+            ],
         ];
     }
 }

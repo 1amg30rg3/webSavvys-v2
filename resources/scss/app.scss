@@ -14,11 +14,11 @@
 @import 'base/animations';
 
 // ── Utilities ─────────────────────────────────────────────────────────────────
-// Scrollbar, theme transition, scroll animations, Vue transitions
+// Scrollbar, scroll animations, Vue transitions
 @import 'utilities/scrollbar';
-@import 'utilities/theme-transition';
 @import 'utilities/scroll-animations';
 @import 'utilities/vue-transitions';
+@import 'utilities/page-loader';
 
 // ── Layout ────────────────────────────────────────────────────────────────────
 // App structure, header, footer, chat FAB
@@ -47,3 +47,8 @@
 // ── Responsive ────────────────────────────────────────────────────────────────
 // Media queries
 @import 'responsive/media-queries';
+
+// ── Micro-interactions ───────────────────────────────────────────────────────
+// Imported last: tilt/magnetic/divider utilities must win the cascade over
+// section-specific hover transitions declared above.
+@import 'utilities/micro-interactions';

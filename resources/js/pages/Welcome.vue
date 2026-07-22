@@ -1,80 +1,77 @@
 <script setup lang="ts">
-import { Head } from '@inertiajs/vue3';
+import { usePage } from '@inertiajs/vue3';
+import { computed, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
+import Seo from '@/components/Seo.vue';
+import type { AppPageProps } from '@/types';
 import App from '../App.vue';
+
+const props = defineProps<{
+    routeLocale: 'en' | 'ka';
+}>();
+
+// Sync the shared i18n locale to this route's `routeLocale` prop. `immediate:
+// true` covers the initial SSR/mount pass; the watcher covers subsequent
+// client-side Inertia visits between `/` and `/ka` that reuse this same page
+// instance. (Named `routeLocale`, not `locale`, to avoid shadowing the i18n
+// `locale` ref of the same name in this scope.)
+const { t, tm, locale } = useI18n();
+watch(
+    () => props.routeLocale,
+    (value) => (locale.value = value),
+    { immediate: true },
+);
+
+const page = usePage<AppPageProps>();
+const seo = computed(() => page.props.seoDefaults);
+
+const socialUrls = computed(() => Object.values(seo.value.social).map((entry) => entry.url));
+
+const organizationSchema = computed(() => ({
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    name: seo.value.organization.name,
+    url: `${seo.value.url}/`,
+    logo: `${seo.value.url}${seo.value.organization.logo}`,
+    image: `${seo.value.url}${seo.value.locales[locale.value]?.image ?? seo.value.defaultImage}`,
+    description: t('seo.description'),
+    areaServed: seo.value.organization.area_served,
+    founder: {
+        '@type': 'Person',
+        name: t('developer.name'),
+        jobTitle: t('developer.role'),
+    },
+    ...(socialUrls.value.length ? { sameAs: socialUrls.value } : {}),
+}));
+
+const websiteSchema = computed(() => ({
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: seo.value.siteName,
+    url: `${seo.value.url}/`,
+    inLanguage: locale.value,
+}));
+
+const faqSchema = computed(() => ({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: (tm('faq.items') as Array<{ q: string; a: string }>).map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.a,
+        },
+    })),
+}));
 </script>
 
 <template>
-    <Head title="WebSavvys - Custom Web Development & Modern Web Applications">
-        <!-- Primary Meta Tags -->
-        <meta
-            name="title"
-            content="WebSavvys - Custom Web Development & Modern Web Applications"
-        />
-        <meta
-            name="description"
-            content="WebSavvys delivers custom-built websites and web applications tailored to your business. Modern, scalable solutions using Laravel, Vue 3, TypeScript, and cutting-edge technologies. No templates, just quality work."
-        />
-        <meta
-            name="keywords"
-            content="custom web development, web applications, Laravel development, Vue.js development, TypeScript, modern websites, scalable web solutions, custom websites, web app development, Inertia.js, SCSS, PostgreSQL, Redis"
-        />
-        <meta name="author" content="WebSavvys - Giga Gavasheli" />
-        <meta name="robots" content="index, follow" />
-        <meta name="language" content="English" />
-        <meta name="revisit-after" content="7 days" />
-
-        <!-- Open Graph / Facebook Meta Tags -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://websavvys.com/" />
-        <meta
-            property="og:title"
-            content="WebSavvys - Custom Web Development & Modern Web Applications"
-        />
-        <meta
-            property="og:description"
-            content="WebSavvys delivers custom-built websites and web applications tailored to your business. Modern, scalable solutions using cutting-edge technologies. No templates, just quality work."
-        />
-        <meta property="og:image" content="https://websavvys.com/og-image.jpg" />
-        <meta property="og:site_name" content="WebSavvys" />
-        <meta property="og:locale" content="en_US" />
-
-        <!-- Twitter Meta Tags -->
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content="https://websavvys.com/" />
-        <meta
-            name="twitter:title"
-            content="WebSavvys - Custom Web Development & Modern Web Applications"
-        />
-        <meta
-            name="twitter:description"
-            content="WebSavvys delivers custom-built websites and web applications tailored to your business. Modern, scalable solutions using cutting-edge technologies."
-        />
-        <meta name="twitter:image" content="https://websavvys.com/twitter-image.jpg" />
-        <meta name="twitter:creator" content="@websavvys" />
-
-        <!-- Additional SEO Meta Tags -->
-        <meta name="theme-color" content="#ff6a5b" />
-        <meta name="msapplication-TileColor" content="#ff6a5b" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="WebSavvys" />
-        <meta name="format-detection" content="telephone=no" />
-
-        <!-- Canonical URL -->
-        <link rel="canonical" href="https://websavvys.com/" />
-
-        <!-- Alternate Languages -->
-        <link rel="alternate" hreflang="en" href="https://websavvys.com/" />
-        <link rel="alternate" hreflang="ka" href="https://websavvys.com/ka" />
-        <link rel="alternate" hreflang="x-default" href="https://websavvys.com/" />
-
-        <!-- Fonts Preconnect -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
-            rel="stylesheet"
-        />
-    </Head>
+    <Seo
+        :title="t('seo.title')"
+        :description="t('seo.description')"
+        :keywords="tm('seo.keywords') as string[]"
+        :json-ld="[organizationSchema, websiteSchema, faqSchema]"
+    />
     <App />
 </template>

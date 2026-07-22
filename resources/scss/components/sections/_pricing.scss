@@ -61,9 +61,7 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
 .pgrid-bg {
     position: absolute;
     inset: 0;
-    background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
     background-size: 48px 48px;
     pointer-events: none;
 }
@@ -82,10 +80,20 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
 }
 
 @keyframes pScan {
-    0%   { top: 0;    opacity: 0; }
-    4%   { opacity: 0.3; }
-    96%  { opacity: 0.3; }
-    100% { top: 100%; opacity: 0; }
+    0% {
+        top: 0;
+        opacity: 0;
+    }
+    4% {
+        opacity: 0.3;
+    }
+    96% {
+        opacity: 0.3;
+    }
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
 }
 
 // Corner labels
@@ -99,8 +107,14 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
     text-transform: uppercase;
     z-index: 2;
 
-    &--tl { top: 8px;    left: 10px; }
-    &--br { bottom: 8px; right: 10px; }
+    &--tl {
+        top: 8px;
+        left: 10px;
+    }
+    &--br {
+        bottom: 8px;
+        right: 10px;
+    }
 }
 
 // Floating badge
@@ -134,8 +148,13 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
 }
 
 @keyframes pFloat {
-    0%, 100% { transform: translateY(0); }
-    50%       { transform: translateY(-7px); }
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-7px);
+    }
 }
 
 // ── Inner content ──────────────────────────────────────────────────────────
@@ -194,8 +213,12 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
 }
 
 @keyframes pBarPulse {
-    from { opacity: 0.7; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0.7;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .pgrid-split-text {
@@ -231,7 +254,10 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
     gap: 2px;
     position: relative;
     overflow: hidden;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     animation: pStatPulse 5s ease-in-out var(--p-delay, 0s) infinite;
     cursor: default;
 
@@ -239,20 +265,27 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
         content: '';
         position: absolute;
         inset: 0;
-        background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 60%);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, transparent 60%);
         pointer-events: none;
     }
 
     &:hover {
         border-color: var(--accent);
-        box-shadow: 0 0 0 1px var(--accent), 0 8px 20px rgba(255, 106, 91, 0.1);
+        box-shadow:
+            0 0 0 1px var(--accent),
+            0 8px 20px rgba(255, 106, 91, 0.1);
         z-index: 3;
     }
 }
 
 @keyframes pStatPulse {
-    0%, 100% { border-color: var(--border); }
-    50%       { border-color: var(--p-color, rgba(255,106,91,0.25)); }
+    0%,
+    100% {
+        border-color: var(--border);
+    }
+    50% {
+        border-color: var(--p-color, rgba(255, 106, 91, 0.25));
+    }
 }
 
 .pgrid-stat-icon {
@@ -299,7 +332,10 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
     gap: 12px;
     position: relative;
     overflow: hidden;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     animation: pStatPulse 5s ease-in-out var(--p-delay, 0s) infinite;
     cursor: default;
 
@@ -307,13 +343,15 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
         content: '';
         position: absolute;
         inset: 0;
-        background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 60%);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, transparent 60%);
         pointer-events: none;
     }
 
     &:hover {
         border-color: var(--accent-2);
-        box-shadow: 0 0 0 1px var(--accent-2), 0 8px 20px rgba(45, 180, 164, 0.1);
+        box-shadow:
+            0 0 0 1px var(--accent-2),
+            0 8px 20px rgba(45, 180, 164, 0.1);
         z-index: 3;
     }
 }
@@ -357,8 +395,12 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
 }
 
 @keyframes pProgAnim {
-    from { width: var(--from, 40%); }
-    to   { width: var(--to, 90%); }
+    from {
+        width: var(--from, 40%);
+    }
+    to {
+        width: var(--to, 90%);
+    }
 }
 
 // Live strip at bottom
@@ -385,8 +427,13 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
 }
 
 @keyframes pDotBlink {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0.2; }
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
 }
 
 .pgrid-live-text {
@@ -415,10 +462,20 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
 }
 
 @keyframes pStreamFlow {
-    0%   { opacity: 0; transform: translateX(-5px); }
-    15%  { opacity: 0.6; }
-    85%  { opacity: 0.6; }
-    100% { opacity: 0; transform: translateX(5px); }
+    0% {
+        opacity: 0;
+        transform: translateX(-5px);
+    }
+    15% {
+        opacity: 0.6;
+    }
+    85% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(5px);
+    }
 }
 
 // ── Dark theme ─────────────────────────────────────────────────────────────
@@ -448,11 +505,21 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
         padding: 14px;
     }
 
-    .pgrid-stat-val  { font-size: 15px; }
-    .pgrid-wide-val  { font-size: 11px; }
-    .pgrid-stat-icon { font-size: 14px; }
-    .pgrid-wide-icon { font-size: 17px; }
-    .pgrid-row--2col { grid-template-columns: 1fr; }
+    .pgrid-stat-val {
+        font-size: 15px;
+    }
+    .pgrid-wide-val {
+        font-size: 11px;
+    }
+    .pgrid-stat-icon {
+        font-size: 14px;
+    }
+    .pgrid-wide-icon {
+        font-size: 17px;
+    }
+    .pgrid-row--2col {
+        grid-template-columns: 1fr;
+    }
 }
 
 // ── Reduced motion ─────────────────────────────────────────────────────────
@@ -468,6 +535,10 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
         animation: none !important;
     }
 
-    .pgrid-prog-fill { width: var(--to, 80%) !important; }
-    .pgrid-live-dot  { opacity: 1 !important; }
+    .pgrid-prog-fill {
+        width: var(--to, 80%) !important;
+    }
+    .pgrid-live-dot {
+        opacity: 1 !important;
+    }
 }

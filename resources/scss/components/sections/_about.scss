@@ -58,9 +58,7 @@
     .grid-bg {
         position: absolute;
         inset: 0;
-        background-image:
-            linear-gradient(var(--border) 1px, transparent 1px),
-            linear-gradient(90deg, var(--border) 1px, transparent 1px);
+        background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
         background-size: 50px 50px;
         pointer-events: none;
     }
@@ -87,8 +85,14 @@
         z-index: 2;
         text-transform: uppercase;
 
-        &.coord-tl { top: 8px;    left: 10px; }
-        &.coord-br { bottom: 8px; right: 10px; }
+        &.coord-tl {
+            top: 8px;
+            left: 10px;
+        }
+        &.coord-br {
+            bottom: 8px;
+            right: 10px;
+        }
     }
 
     .stream {
@@ -133,7 +137,10 @@
     flex-direction: column;
     position: relative;
     overflow: hidden;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     animation: mCardPulse 5s ease-in-out var(--pulse-delay, 0s) infinite;
     cursor: default;
 
@@ -147,7 +154,9 @@
 
     &:hover {
         border-color: var(--accent);
-        box-shadow: 0 0 0 1px var(--accent), 0 8px 20px rgba(255, 106, 91, 0.12);
+        box-shadow:
+            0 0 0 1px var(--accent),
+            0 8px 20px rgba(255, 106, 91, 0.12);
         z-index: 3;
     }
 
@@ -172,7 +181,10 @@
     line-height: 1;
     flex-shrink: 0;
 
-    &--lg { font-size: 26px; margin-bottom: 0; }
+    &--lg {
+        font-size: 26px;
+        margin-bottom: 0;
+    }
 }
 
 .m-label {
@@ -241,4 +253,3 @@
     animation: mDotBlink 2s ease-in-out infinite;
     flex-shrink: 0;
 }
-

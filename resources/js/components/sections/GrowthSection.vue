@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
 import { useScrollAnimation } from '@/composables/useScrollAnimation';
+import { vTilt } from '@/composables/useTilt';
 
 const { t } = useI18n();
 const { sectionRef } = useScrollAnimation();
@@ -16,14 +17,14 @@ const { sectionRef } = useScrollAnimation();
             <h2 class="section-title">{{ t('growth.title') }}</h2>
         </div>
         <div class="feature-grid">
-            <div class="feature-card" data-animate="fade-up" data-delay="150">
+            <div class="feature-card" v-tilt data-animate="fade-up" data-delay="150">
                 <div class="service-icon">
                     <font-awesome-icon :icon="['fas', 'chart-line']" />
                 </div>
                 <h3>{{ t('growth.seoTitle') }}</h3>
                 <p>{{ t('growth.seoText') }}</p>
             </div>
-            <div class="feature-card" data-animate="fade-up" data-delay="300">
+            <div class="feature-card" v-tilt data-animate="fade-up" data-delay="300">
                 <div class="service-icon">
                     <font-awesome-icon :icon="['fas', 'lightbulb']" />
                 </div>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
 import { useScrollAnimation } from '@/composables/useScrollAnimation';
+import { vTilt } from '@/composables/useTilt';
 
 const { t } = useI18n();
 const { sectionRef } = useScrollAnimation();
@@ -19,12 +20,12 @@ const { sectionRef } = useScrollAnimation();
             <p class="section-text">{{ t('payment.subtitle') }}</p>
         </div>
         <div class="payment-grid">
-            <div class="payment-card payment-advance" data-animate="fade-up" data-delay="50">
+            <div class="payment-card payment-advance" v-tilt data-animate="fade-up" data-delay="50">
                 <div class="payment-percentage">30%</div>
                 <h3>{{ t('payment.advance.title') }}</h3>
                 <p>{{ t('payment.advance.description') }}</p>
             </div>
-            <div class="payment-card payment-final" data-animate="fade-up" data-delay="100">
+            <div class="payment-card payment-final" v-tilt data-animate="fade-up" data-delay="100">
                 <div class="payment-percentage">70%</div>
                 <h3>{{ t('payment.final.title') }}</h3>
                 <p>{{ t('payment.final.description') }}</p>

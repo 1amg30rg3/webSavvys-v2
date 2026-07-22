@@ -1,0 +1,97 @@
+// ══════════════════════════════════════════════════════════════════════════════
+// Page Loader (boot intro)
+// ══════════════════════════════════════════════════════════════════════════════
+
+.page-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background: var(--bg);
+}
+
+.page-loader-mark {
+    font-family: $font-heading;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+.page-loader-accent {
+    background: linear-gradient(135deg, var(--accent), var(--accent-3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.page-loader-rest {
+    color: var(--text);
+}
+
+.page-loader-bar {
+    width: 160px;
+    height: 2px;
+    background: var(--border);
+    overflow: hidden;
+    border-radius: 999px;
+}
+
+.page-loader-bar-fill {
+    height: 100%;
+    width: 100%;
+    transform-origin: left;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+    animation: pageLoaderFill 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes pageLoaderFill {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.loader-fade-leave-active {
+    transition:
+        opacity 0.5s ease,
+        visibility 0.5s ease;
+}
+
+.loader-fade-leave-to {
+    opacity: 0;
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// Cursor Glow
+// ══════════════════════════════════════════════════════════════════════════════
+
+.cursor-glow {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: radial-gradient(480px circle at var(--glow-x, 50%) var(--glow-y, 50%), rgba(255, 106, 91, 0.06), transparent 70%);
+    transition: opacity 0.3s ease;
+}
+
+:root[data-theme='dark'] .cursor-glow {
+    background: radial-gradient(480px circle at var(--glow-x, 50%) var(--glow-y, 50%), rgba(255, 106, 91, 0.1), transparent 70%);
+}
+
+// ── Reduced motion ─────────────────────────────────────────────────────────
+@media (prefers-reduced-motion: reduce) {
+    .page-loader-bar-fill {
+        animation: none;
+        transform: scaleX(1);
+    }
+
+    .cursor-glow {
+        display: none;
+    }
+}

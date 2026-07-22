@@ -12,7 +12,7 @@ export function useScrollAnimation(threshold = 0.1) {
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        const animatedElements = entry.target.querySelectorAll('[data-animate]');
+                        const animatedElements = entry.target.querySelectorAll('[data-animate], .stagger-children');
                         animatedElements.forEach((el) => {
                             const delay = el.getAttribute('data-delay');
                             if (delay) {
@@ -26,7 +26,7 @@ export function useScrollAnimation(threshold = 0.1) {
                     }
                 });
             },
-            { threshold }
+            { threshold },
         );
 
         observer.observe(sectionRef.value);

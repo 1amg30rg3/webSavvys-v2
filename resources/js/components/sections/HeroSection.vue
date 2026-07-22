@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useCountUp } from '@/composables/useCountUp';
+import { useMagnetic } from '@/composables/useMagnetic';
 import { useScrollAnimation } from '@/composables/useScrollAnimation';
+import { useTilt } from '@/composables/useTilt';
 
 defineProps<{
     chatUrl: string;
@@ -12,11 +15,22 @@ const { t, tm } = useI18n();
 const { sectionRef } = useScrollAnimation();
 
 const stackItems = computed(() => (tm('hero.stack') as string[]) ?? []);
+
+const primaryButtonRef = ref<HTMLElement | null>(null);
+const ghostButtonRef = ref<HTMLElement | null>(null);
+const heroVisualRef = ref<HTMLElement | null>(null);
+
+useMagnetic(primaryButtonRef);
+useMagnetic(ghostButtonRef);
+useTilt(heroVisualRef, { max: 5 });
+
+const { value: projectsCount } = useCountUp(heroVisualRef, 120);
+const { value: perfScoreCount } = useCountUp(heroVisualRef, 99);
+const { value: ratingCount } = useCountUp(heroVisualRef, 5);
 </script>
 
 <template>
     <section class="hero" id="hero" ref="sectionRef">
-
         <!-- LEFT: Text content -->
         <div class="hero-content" data-animate="fade-up">
             <p class="eyebrow">{{ t('hero.eyebrow') }}</p>
@@ -27,11 +41,11 @@ const stackItems = computed(() => (tm('hero.stack') as string[]) ?? []);
                 {{ t('hero.subtitle') }}
             </p>
             <div class="hero-actions" data-animate="fade-up" style="--delay: 0.15s">
-                <a class="primary-button" :href="chatUrl" target="_blank" rel="noopener">
+                <a class="primary-button" ref="primaryButtonRef" :href="chatUrl" target="_blank" rel="noopener">
                     <font-awesome-icon :icon="['fas', 'rocket']" />
                     {{ t('hero.cta') }}
                 </a>
-                <a class="ghost-button" href="#services">
+                <a class="ghost-button" ref="ghostButtonRef" href="#services">
                     {{ t('hero.secondaryCta') }}
                     <font-awesome-icon :icon="['fas', 'arrow-right']" />
                 </a>
@@ -39,8 +53,7 @@ const stackItems = computed(() => (tm('hero.stack') as string[]) ?? []);
         </div>
 
         <!-- RIGHT: Visual dashboard card -->
-        <div class="hero-visual" data-animate="fade-left" style="--delay: 0.1s" aria-hidden="true">
-
+        <div class="hero-visual" ref="heroVisualRef" data-animate="fade-left" style="--delay: 0.1s" aria-hidden="true">
             <!-- Grid bg + scan -->
             <div class="hv-grid-bg"></div>
             <div class="hv-scan"></div>
@@ -56,21 +69,20 @@ const stackItems = computed(() => (tm('hero.stack') as string[]) ?? []);
             </div>
 
             <div class="hv-inner">
-
                 <!-- Top: headline metric row -->
                 <div class="hv-metric-row">
                     <div class="hv-metric">
-                        <span class="hv-metric-val">120<span class="hv-metric-sup">+</span></span>
+                        <span class="hv-metric-val">{{ projectsCount }}<span class="hv-metric-sup">+</span></span>
                         <span class="hv-metric-label">{{ t('hero.visual.projects') }}</span>
                     </div>
                     <div class="hv-metric-divider"></div>
                     <div class="hv-metric">
-                        <span class="hv-metric-val">99<span class="hv-metric-sup">%</span></span>
+                        <span class="hv-metric-val">{{ perfScoreCount }}<span class="hv-metric-sup">%</span></span>
                         <span class="hv-metric-label">{{ t('hero.visual.perfScore') }}</span>
                     </div>
                     <div class="hv-metric-divider"></div>
                     <div class="hv-metric">
-                        <span class="hv-metric-val">5<span class="hv-metric-sup">★</span></span>
+                        <span class="hv-metric-val">{{ ratingCount }}<span class="hv-metric-sup">★</span></span>
                         <span class="hv-metric-label">{{ t('hero.visual.rated') }}</span>
                     </div>
                 </div>
@@ -105,10 +117,8 @@ const stackItems = computed(() => (tm('hero.stack') as string[]) ?? []);
                     <span class="hv-avail-text">{{ t('hero.visual.availableForProjects') }}</span>
                     <span class="hv-avail-pill">{{ new Date().getFullYear() }}</span>
                 </div>
-
             </div>
         </div>
-
     </section>
 </template>
 
@@ -137,7 +147,10 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
     border: 1px solid var(--border);
     background: var(--surface);
     box-shadow: var(--shadow);
-    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+    transition:
+        box-shadow 0.4s ease,
+        border-color 0.4s ease,
+        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 
     &:hover {
         border-color: var(--accent);
@@ -149,9 +162,7 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
 .hv-grid-bg {
     position: absolute;
     inset: 0;
-    background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
     background-size: 44px 44px;
     pointer-events: none;
     z-index: 0;
@@ -160,7 +171,8 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
 // Scan line
 .hv-scan {
     position: absolute;
-    left: 0; right: 0;
+    left: 0;
+    right: 0;
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--accent), transparent);
     opacity: 0.3;
@@ -170,10 +182,20 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
 }
 
 @keyframes hvScan {
-    0%   { top: 0;    opacity: 0; }
-    4%   { opacity: 0.3; }
-    96%  { opacity: 0.3; }
-    100% { top: 100%; opacity: 0; }
+    0% {
+        top: 0;
+        opacity: 0;
+    }
+    4% {
+        opacity: 0.3;
+    }
+    96% {
+        opacity: 0.3;
+    }
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
 }
 
 // Corner coords
@@ -187,8 +209,14 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
     opacity: 0.4;
     z-index: 2;
 
-    &--tl { top: 10px;    left: 12px; }
-    &--br { bottom: 10px; right: 12px; }
+    &--tl {
+        top: 10px;
+        left: 12px;
+    }
+    &--br {
+        bottom: 10px;
+        right: 12px;
+    }
 }
 
 // Status badge
@@ -209,7 +237,7 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
 }
 
 .hv-status-dot {
@@ -223,8 +251,13 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
 }
 
 @keyframes hvDotBlink {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0.2; }
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
 }
 
 // ── Inner content ──────────────────────────────────────────────────────────
@@ -330,7 +363,9 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
     padding: 9px 12px;
     border: 1px solid var(--border);
     background: var(--bg);
-    transition: border-color 0.25s ease, background 0.25s ease;
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease;
     animation: fadeInUp 0.5s ease-out calc(var(--item-delay, 0s)) both;
 
     &:hover {
@@ -382,8 +417,12 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
 }
 
 @keyframes hvBarGrow {
-    from { width: 0; }
-    to   { width: var(--bar-w, 80%); }
+    from {
+        width: 0;
+    }
+    to {
+        width: var(--bar-w, 80%);
+    }
 }
 
 // Availability strip
@@ -448,9 +487,15 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
         gap: 16px;
     }
 
-    .hv-metric-val  { font-size: 1.4rem; }
-    .hv-stack-bar   { width: 40px; }
-    .hv-metric      { padding: 0 10px; }
+    .hv-metric-val {
+        font-size: 1.4rem;
+    }
+    .hv-stack-bar {
+        width: 40px;
+    }
+    .hv-metric {
+        padding: 0 10px;
+    }
 }
 
 // ── Reduced motion ─────────────────────────────────────────────────────────
@@ -459,8 +504,12 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
     .hv-status-dot,
     .hv-avail-dot,
     .hv-stack-fill,
-    .hv-stack-item  { animation: none !important; }
+    .hv-stack-item {
+        animation: none !important;
+    }
 
-    .hv-stack-fill  { width: var(--bar-w, 80%) !important; }
+    .hv-stack-fill {
+        width: var(--bar-w, 80%) !important;
+    }
 }
 </style>

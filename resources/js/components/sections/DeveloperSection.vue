@@ -13,16 +13,22 @@ const { sectionRef } = useScrollAnimation();
 <template>
     <section class="section-developer" id="developer" ref="sectionRef">
         <div class="dev-inner">
-
             <!-- LEFT: Image column -->
             <div class="dev-image-col" data-animate="fade-right" style="--delay: 0s">
-
                 <!-- Decorative corner marks -->
                 <span class="dev-corner dev-corner--tl" aria-hidden="true"></span>
                 <span class="dev-corner dev-corner--br" aria-hidden="true"></span>
 
                 <div class="dev-image-wrap">
-                    <img src="me.jpeg" :alt="t('developer.name')" class="dev-photo" />
+                    <img
+                        src="/giorgi-gavasheli-fullstack-developer.jpg"
+                        :alt="t('developer.photoAlt')"
+                        width="1280"
+                        height="1169"
+                        loading="lazy"
+                        decoding="async"
+                        class="dev-photo"
+                    />
                     <!-- Gradient overlay -->
                     <div class="dev-image-overlay" aria-hidden="true"></div>
                 </div>
@@ -48,12 +54,10 @@ const { sectionRef } = useScrollAnimation();
                     <span class="dev-avail-dot"></span>
                     Open to work
                 </div>
-
             </div>
 
             <!-- RIGHT: Info column -->
             <div class="dev-info-col">
-
                 <div class="section-header" data-animate="fade-up">
                     <p class="section-eyebrow">
                         <font-awesome-icon :icon="['fas', 'user']" />
@@ -85,21 +89,21 @@ const { sectionRef } = useScrollAnimation();
                     <div class="dev-skill">
                         <span class="dev-skill-label">Frontend</span>
                         <div class="dev-skill-track">
-                            <div class="dev-skill-fill" style="--sw: 95%; --sc: var(--accent); --sd: 0.3s;"></div>
+                            <div class="dev-skill-fill" style="--sw: 95%; --sc: var(--accent); --sd: 0.3s"></div>
                         </div>
                         <span class="dev-skill-pct">95%</span>
                     </div>
                     <div class="dev-skill">
                         <span class="dev-skill-label">Backend</span>
                         <div class="dev-skill-track">
-                            <div class="dev-skill-fill" style="--sw: 80%; --sc: var(--accent-2); --sd: 0.4s;"></div>
+                            <div class="dev-skill-fill" style="--sw: 80%; --sc: var(--accent-2); --sd: 0.4s"></div>
                         </div>
                         <span class="dev-skill-pct">80%</span>
                     </div>
                     <div class="dev-skill">
                         <span class="dev-skill-label">UI / UX</span>
                         <div class="dev-skill-track">
-                            <div class="dev-skill-fill" style="--sw: 88%; --sc: var(--accent-3); --sd: 0.5s;"></div>
+                            <div class="dev-skill-fill" style="--sw: 88%; --sc: var(--accent-3); --sd: 0.5s"></div>
                         </div>
                         <span class="dev-skill-pct">88%</span>
                     </div>
@@ -111,7 +115,6 @@ const { sectionRef } = useScrollAnimation();
                         <font-awesome-icon :icon="['fas', 'arrow-right']" />
                     </a>
                 </div>
-
             </div>
         </div>
     </section>

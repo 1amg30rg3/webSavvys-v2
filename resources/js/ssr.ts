@@ -5,6 +5,8 @@ import type { DefineComponent } from 'vue';
 import { createSSRApp, h } from 'vue';
 import { renderToString } from 'vue/server-renderer';
 
+import i18n from './i18n';
+
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createServer(
@@ -14,7 +16,10 @@ createServer(
             render: renderToString,
             title: (title) => (title ? `${title} - ${appName}` : appName),
             resolve: resolvePage,
-            setup: ({ App, props, plugin }) => createSSRApp({ render: () => h(App, props) }).use(plugin),
+            setup: ({ App, props, plugin }) =>
+                createSSRApp({ render: () => h(App, props) })
+                    .use(plugin)
+                    .use(i18n),
         }),
     { cluster: true },
 );

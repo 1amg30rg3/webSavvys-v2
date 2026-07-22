@@ -1,0 +1,146 @@
+// ══════════════════════════════════════════════════════════════════════════════
+// Micro-interaction utilities (useTilt / useMagnetic composables + section dividers)
+// Imported last so its transitions/transforms win over section-specific hover rules.
+// ══════════════════════════════════════════════════════════════════════════════
+
+// NOTE: `transform` here is deliberately NOT paired with a `transition` in this
+// file — a `transition` shorthand set here would win the cascade wholesale and
+// silently cancel the host element's own box-shadow/border-color transitions
+// (the CSS `transition` property is atomic; it doesn't merge across rules).
+// Each host component's existing `transition` list already includes `transform`
+// (or has it added when useTilt/useMagnetic is wired in), so the smoothing comes
+// from there instead.
+.is-tilt {
+    position: relative;
+    transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+    will-change: transform;
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 5;
+        pointer-events: none;
+        background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(255, 255, 255, 0.16), transparent 55%);
+        opacity: var(--glare-opacity, 0);
+        transition: opacity 0.3s ease;
+    }
+}
+
+.is-magnetic {
+    transform: translate(var(--magnetic-x, 0px), var(--magnetic-y, 0px));
+}
+
+.primary-button.is-magnetic:hover,
+.ghost-button.is-magnetic:hover {
+    transform: translate(var(--magnetic-x, 0px), calc(var(--magnetic-y, 0px) - 3px));
+}
+
+// Cursor-follow glow layered under the existing shine-sweep on magnetic buttons.
+.primary-button::after,
+.ghost-button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(120px circle at var(--btn-glow-x, 50%) var(--btn-glow-y, 50%), rgba(255, 255, 255, 0.3), transparent 70%);
+    opacity: var(--btn-glow-opacity, 0);
+    transition: opacity 0.3s ease;
+}
+
+// Combined tilt + existing hover-lift transform for cards that already move on hover
+// (see the cascade note above — this must set the full transform, not just add to it).
+@mixin tilt-hover($lift) {
+    transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) #{$lift};
+}
+
+.service-card.is-tilt:hover {
+    @include tilt-hover(translateY(-4px));
+}
+
+.feature-card.is-tilt:hover {
+    @include tilt-hover(translateY(-4px));
+}
+
+.flow-step-card.is-tilt:hover {
+    @include tilt-hover(translateX(8px));
+}
+
+.payment-card.is-tilt:hover {
+    @include tilt-hover(translateY(-8px));
+}
+
+// ── Stagger container ─────────────────────────────────────────────────────────
+// Add class `stagger-children` to a grid/list wrapper (inside a `useScrollAnimation`
+// section) and each direct child animates in with an automatic incremental delay.
+// Lives here (imported last) so it reliably wins over a child's own `transition`
+// declaration for unrelated properties (border-color, box-shadow, etc.) — see the
+// cascade note above.
+.stagger-children > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+        opacity 0.5s ease-out,
+        transform 0.5s ease-out;
+}
+
+@for $i from 1 through 12 {
+    .stagger-children.is-visible > *:nth-child(#{$i}) {
+        transition-delay: #{($i - 1) * 0.08}s;
+    }
+}
+
+.stagger-children.is-visible > * {
+    opacity: 1;
+    transform: none;
+}
+
+// ── Section divider ────────────────────────────────────────────────────────────
+.section-divider {
+    height: 1px;
+    margin: clamp(32px, 5vw, 64px) 0;
+    background: var(--border);
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, transparent, var(--accent), var(--accent-3), transparent);
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        transition-delay: var(--delay, 0s);
+    }
+
+    &.is-visible::after {
+        transform: scaleX(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .is-tilt {
+        transform: none !important;
+        transition: none;
+
+        &::after {
+            display: none;
+        }
+    }
+
+    .is-magnetic {
+        transform: none !important;
+    }
+
+    .stagger-children > * {
+        transition: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    .section-divider::after {
+        transition: none;
+        transform: scaleX(1);
+    }
+}

@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useScrollAnimation } from '@/composables/useScrollAnimation';
+import { vTilt } from '@/composables/useTilt';
 
 const { t, tm } = useI18n();
 const { sectionRef } = useScrollAnimation();
@@ -23,7 +24,14 @@ const getServiceIcon = (index: number) => serviceIcons[index % serviceIcons.leng
             <p class="section-text">{{ t('services.description') }}</p>
         </div>
         <div class="services-grid">
-            <div v-for="(item, index) in serviceItems" :key="`service-${index}`" class="service-card" data-animate="fade-up" :data-delay="index * 150">
+            <div
+                v-for="(item, index) in serviceItems"
+                :key="`service-${index}`"
+                class="service-card"
+                v-tilt
+                data-animate="fade-up"
+                :data-delay="index * 150"
+            >
                 <div class="service-icon">
                     <font-awesome-icon :icon="['fas', getServiceIcon(index)]" />
                 </div>
