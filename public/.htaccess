@@ -5,6 +5,11 @@
 
     RewriteEngine On
 
+    # Redirect www to the canonical non-www domain (matches config/seo.php's
+    # canonical/OG URLs — avoids www vs non-www duplicate-content indexing).
+    RewriteCond %{HTTP_HOST} ^www\.websavvys\.com$ [NC]
+    RewriteRule ^(.*)$ https://websavvys.com/$1 [L,R=301]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
