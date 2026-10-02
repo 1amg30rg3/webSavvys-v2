@@ -15,8 +15,30 @@ const max = computed(() => Math.max(1, ...props.items.map((i) => i.value)));
 </template>
 
 <style scoped>
-.cols { display: flex; align-items: flex-end; gap: 3px; height: 140px; }
-.col { flex: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; }
-.bar { width: 100%; min-height: 2px; background: var(--c1); border-radius: 3px 3px 0 0; }
-span { font-size: 10px; color: var(--muted); height: 12px; }
+.cols {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 140px;
+}
+.col {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 4px;
+}
+.bar {
+    width: 100%;
+    min-height: 2px;
+    background: var(--c1);
+    border-radius: 3px 3px 0 0;
+}
+span {
+    font-size: 10px;
+    color: var(--muted);
+    height: 12px;
+}
 </style>

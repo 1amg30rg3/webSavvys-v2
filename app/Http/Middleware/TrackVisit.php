@@ -28,6 +28,10 @@ class TrackVisit
             return;
         }
 
+        if (in_array($request->ip(), config('admin.excluded_ips'), true)) {
+            return;
+        }
+
         $ua = $request->userAgent();
 
         try {

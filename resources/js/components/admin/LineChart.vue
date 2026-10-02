@@ -48,7 +48,7 @@ function onMove(e: MouseEvent) {
             <path :d="line('views')" class="line views" />
             <path :d="line('visitors')" class="line visitors" />
             <g v-if="hover !== null">
-                <line :x1="x(hover)" :x2="x(hover)" :y1="pad.t" :y2="H - pad.b" class="cursor" />
+                <line :x1="x(hover)" :x2="x(hover)" :y1="pad.t" :y2="H - pad.b" class="crosshair" />
                 <circle :cx="x(hover)" :cy="y(data[hover].views)" r="4" class="dot views" />
                 <circle :cx="x(hover)" :cy="y(data[hover].visitors)" r="4" class="dot visitors" />
             </g>
@@ -66,19 +66,81 @@ function onMove(e: MouseEvent) {
 </template>
 
 <style scoped>
-.chart { position: relative; }
-svg { width: 100%; height: auto; display: block; }
-.grid { stroke: var(--grid); stroke-width: 1; }
-.axis { fill: var(--muted); font-size: 11px; }
-.line { fill: none; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
-.line.views, .dot.views { stroke: var(--c1); }
-.line.visitors, .dot.visitors { stroke: var(--c2); }
-.dot { fill: var(--card); stroke-width: 2.5; }
-.area { fill: var(--c1); opacity: 0.1; }
-.cursor { stroke: var(--muted); stroke-dasharray: 3 3; }
-.tip { position: absolute; top: 0; transform: translateX(-50%); background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; font-size: 12px; display: grid; gap: 2px; pointer-events: none; white-space: nowrap; box-shadow: 0 4px 16px rgb(0 0 0 / 0.25); }
-.legend { display: flex; gap: 16px; font-size: 12px; color: var(--muted); margin-top: 8px; }
-.sw { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; }
-.sw.views { background: var(--c1); }
-.sw.visitors { background: var(--c2); }
+.chart {
+    position: relative;
+}
+svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.grid {
+    stroke: var(--grid);
+    stroke-width: 1;
+}
+.axis {
+    fill: var(--muted);
+    font-size: 11px;
+}
+.line {
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+.line.views,
+.dot.views {
+    stroke: var(--c1);
+}
+.line.visitors,
+.dot.visitors {
+    stroke: var(--c2);
+}
+.dot {
+    fill: var(--card);
+    stroke-width: 2.5;
+}
+.area {
+    fill: var(--c1);
+    opacity: 0.1;
+}
+.crosshair {
+    stroke: var(--muted);
+    stroke-dasharray: 3 3;
+}
+.tip {
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 12px;
+    display: grid;
+    gap: 2px;
+    pointer-events: none;
+    white-space: nowrap;
+    box-shadow: 0 4px 16px rgb(0 0 0 / 0.25);
+}
+.legend {
+    display: flex;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+}
+.sw {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    margin-right: 6px;
+}
+.sw.views {
+    background: var(--c1);
+}
+.sw.visitors {
+    background: var(--c2);
+}
 </style>
