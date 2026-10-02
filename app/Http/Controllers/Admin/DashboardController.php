@@ -51,7 +51,9 @@ class DashboardController extends Controller
             ->get();
 
         $hours = $base()
-            ->selectRaw("cast(strftime('%H', visited_at) as integer) as hour, count(*) as value")
+            ->selectRaw(DB::connection()->getDriverName() === 'sqlite'
+                ? "cast(strftime('%H', visited_at) as integer) as hour, count(*) as value"
+                : 'hour(visited_at) as hour, count(*) as value')
             ->groupBy('hour')
             ->pluck('value', 'hour');
 
