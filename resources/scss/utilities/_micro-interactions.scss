@@ -92,12 +92,28 @@
 }
 
 // ── Section divider ────────────────────────────────────────────────────────────
+main > .container {
+    counter-reset: section-index 1;
+}
+
 .section-divider {
     height: 1px;
     margin: clamp(32px, 5vw, 64px) 0;
     background: var(--border);
     position: relative;
-    overflow: hidden;
+    counter-increment: section-index;
+
+    &::before {
+        content: counter(section-index, decimal-leading-zero);
+        position: absolute;
+        right: 0;
+        bottom: 10px;
+        font-family: $font-heading;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        color: var(--muted);
+    }
 
     &::after {
         content: '';

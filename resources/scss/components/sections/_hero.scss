@@ -5,7 +5,7 @@
 .hero {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: clamp(24px, 4vw, 64px);
+    gap: 40px clamp(24px, 4vw, 64px);
     align-items: center;
     animation: fadeInUp 0.8s ease-out;
 }
@@ -26,7 +26,7 @@
     letter-spacing: 0.12em;
     font-size: 0.75rem;
     font-weight: 700;
-    color: var(--accent);
+    color: var(--accent-ink);
     margin-bottom: 20px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 2px 8px rgba(255, 106, 91, 0.15);
@@ -54,6 +54,10 @@
     display: flex;
     flex-wrap: wrap;
     gap: 14px;
+
+    @media (max-width: 480px) {
+        display: grid;
+    }
 }
 
 .hero-card {

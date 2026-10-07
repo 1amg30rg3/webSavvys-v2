@@ -160,19 +160,19 @@ watch(locale, (value) => {
         <main class="main">
             <div class="container">
                 <HeroSection :chat-url="chatUrl" :locale-label="localeLabel" />
-                <div class="section-divider" data-animate="fade-in"></div>
+                <div class="section-divider" data-animate="fade-in" aria-hidden="true"></div>
                 <PricingSection :chat-url="chatUrl" />
-                <div class="section-divider" data-animate="fade-in"></div>
+                <div class="section-divider" data-animate="fade-in" aria-hidden="true"></div>
                 <AboutSection />
-                <div class="section-divider" data-animate="fade-in"></div>
+                <div class="section-divider" data-animate="fade-in" aria-hidden="true"></div>
                 <ServicesSection />
-                <div class="section-divider" data-animate="fade-in"></div>
+                <div class="section-divider" data-animate="fade-in" aria-hidden="true"></div>
                 <GrowthSection />
-                <div class="section-divider" data-animate="fade-in"></div>
+                <div class="section-divider" data-animate="fade-in" aria-hidden="true"></div>
                 <FlowSection />
-                <div class="section-divider" data-animate="fade-in"></div>
+                <div class="section-divider" data-animate="fade-in" aria-hidden="true"></div>
                 <FaqSection />
-                <div class="section-divider" data-animate="fade-in"></div>
+                <div class="section-divider" data-animate="fade-in" aria-hidden="true"></div>
                 <DeveloperSection :portfolio-url="portfolioUrl" />
                 <ContactSection :email-link="emailLink" :phone-link="phoneLink" :chat-url="chatUrl" />
             </div>

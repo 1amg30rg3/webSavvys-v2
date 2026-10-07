@@ -19,7 +19,7 @@
     margin-bottom: 20px;
     border: 1px solid var(--border);
     background: var(--surface);
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-card);
     position: relative;
     overflow: hidden;
     transition:
@@ -44,7 +44,7 @@
 
     &:hover {
         transform: translateY(-4px);
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        box-shadow: var(--shadow-card-hover);
         border-color: var(--card-accent);
 
         &::before {
@@ -63,6 +63,24 @@
 
     &--ecommerce {
         --card-accent: var(--accent-3);
+    }
+
+    &--webapp {
+        border-color: transparent;
+        background:
+            linear-gradient(180deg, transparent 45%, rgba(45, 180, 164, 0.09)) padding-box,
+            linear-gradient(var(--surface), var(--surface)) padding-box,
+            linear-gradient(150deg, var(--accent-2), var(--accent-3) 55%, var(--accent)) border-box;
+        box-shadow:
+            var(--shadow-card),
+            0 24px 48px -24px rgba(45, 180, 164, 0.5);
+
+        &:hover {
+            border-color: transparent;
+            box-shadow:
+                var(--shadow-card-hover),
+                0 28px 56px -22px rgba(45, 180, 164, 0.6);
+        }
     }
 }
 

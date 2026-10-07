@@ -53,69 +53,104 @@ const { value: ratingCount } = useCountUp(heroVisualRef, 5);
         </div>
 
         <!-- RIGHT: Visual dashboard card -->
-        <div class="hero-visual" ref="heroVisualRef" data-animate="fade-left" style="--delay: 0.1s" aria-hidden="true">
-            <!-- Grid bg + scan -->
-            <div class="hv-grid-bg"></div>
-            <div class="hv-scan"></div>
-
-            <!-- Corner labels -->
-            <span class="hv-coord hv-coord--tl">{{ t('hero.visual.coordStack') }}</span>
-            <span class="hv-coord hv-coord--br">{{ localeLabel }}</span>
-
-            <!-- Status badge — floats top right -->
-            <div class="hv-status-badge">
-                <span class="hv-status-dot"></span>
-                {{ t('hero.stackTitle') }}
+        <div class="hero-stage">
+            <div class="hero-art" aria-hidden="true">
+                <span class="ha-glow"></span>
+                <span class="ha-rings"></span>
+                <span class="ha-orbit"></span>
+                <span class="ha-dots"></span>
             </div>
 
-            <div class="hv-inner">
-                <!-- Top: headline metric row -->
-                <div class="hv-metric-row">
-                    <div class="hv-metric">
-                        <span class="hv-metric-val">{{ projectsCount }}<span class="hv-metric-sup">+</span></span>
-                        <span class="hv-metric-label">{{ t('hero.visual.projects') }}</span>
-                    </div>
-                    <div class="hv-metric-divider"></div>
-                    <div class="hv-metric">
-                        <span class="hv-metric-val">{{ perfScoreCount }}<span class="hv-metric-sup">%</span></span>
-                        <span class="hv-metric-label">{{ t('hero.visual.perfScore') }}</span>
-                    </div>
-                    <div class="hv-metric-divider"></div>
-                    <div class="hv-metric">
-                        <span class="hv-metric-val">{{ ratingCount }}<span class="hv-metric-sup">★</span></span>
-                        <span class="hv-metric-label">{{ t('hero.visual.rated') }}</span>
-                    </div>
+            <div class="hero-visual" ref="heroVisualRef" data-animate="fade-left" style="--delay: 0.1s" aria-hidden="true">
+                <!-- Grid bg + scan -->
+                <div class="hv-grid-bg"></div>
+                <div class="hv-scan"></div>
+
+                <!-- Corner labels -->
+                <span class="hv-coord hv-coord--tl">{{ t('hero.visual.coordStack') }}</span>
+                <span class="hv-coord hv-coord--br">{{ localeLabel }}</span>
+
+                <!-- Status badge — floats top right -->
+                <div class="hv-status-badge">
+                    <span class="hv-status-dot"></span>
+                    {{ t('hero.stackTitle') }}
                 </div>
 
-                <!-- Stack section label -->
-                <div class="hv-section-label">
-                    <span class="hv-section-line"></span>
-                    <span class="hv-section-text">{{ t('hero.visual.techStack') }}</span>
-                    <span class="hv-section-line"></span>
+                <div class="hv-inner">
+                    <!-- Top: headline metric row -->
+                    <div class="hv-metric-row">
+                        <div class="hv-metric">
+                            <span class="hv-metric-val">{{ projectsCount }}<span class="hv-metric-sup">+</span></span>
+                            <span class="hv-metric-label">{{ t('hero.visual.projects') }}</span>
+                        </div>
+                        <div class="hv-metric-divider"></div>
+                        <div class="hv-metric">
+                            <span class="hv-metric-val">{{ perfScoreCount }}<span class="hv-metric-sup">%</span></span>
+                            <span class="hv-metric-label">{{ t('hero.visual.perfScore') }}</span>
+                        </div>
+                        <div class="hv-metric-divider"></div>
+                        <div class="hv-metric">
+                            <span class="hv-metric-val">{{ ratingCount }}<span class="hv-metric-sup">★</span></span>
+                            <span class="hv-metric-label">{{ t('hero.visual.rated') }}</span>
+                        </div>
+                    </div>
+
+                    <!-- Stack section label -->
+                    <div class="hv-section-label">
+                        <span class="hv-section-line"></span>
+                        <span class="hv-section-text">{{ t('hero.visual.techStack') }}</span>
+                        <span class="hv-section-line"></span>
+                    </div>
+
+                    <!-- Stack grid -->
+                    <ul class="hv-stack" role="list">
+                        <li
+                            v-for="(item, index) in stackItems"
+                            :key="`stack-${index}`"
+                            class="hv-stack-item"
+                            :style="{ '--item-delay': `${0.2 + index * 0.04}s`, '--item-index': index }"
+                            data-animate="fade-up"
+                        >
+                            <span class="hv-stack-index">{{ String(index + 1).padStart(2, '0') }}</span>
+                            <span class="hv-stack-name">{{ item }}</span>
+                            <span class="hv-stack-bar">
+                                <span class="hv-stack-fill" :style="{ '--bar-w': `${75 + (index % 3) * 8}%` }"></span>
+                            </span>
+                        </li>
+                    </ul>
+
+                    <!-- Bottom: availability strip -->
+                    <div class="hv-availability">
+                        <span class="hv-avail-dot"></span>
+                        <span class="hv-avail-text">{{ t('hero.visual.availableForProjects') }}</span>
+                        <span class="hv-avail-pill">{{ new Date().getFullYear() }}</span>
+                    </div>
                 </div>
+            </div>
 
-                <!-- Stack grid -->
-                <ul class="hv-stack" role="list">
-                    <li
-                        v-for="(item, index) in stackItems"
-                        :key="`stack-${index}`"
-                        class="hv-stack-item"
-                        :style="{ '--item-delay': `${0.2 + index * 0.04}s`, '--item-index': index }"
-                        data-animate="fade-up"
-                    >
-                        <span class="hv-stack-index">{{ String(index + 1).padStart(2, '0') }}</span>
-                        <span class="hv-stack-name">{{ item }}</span>
-                        <span class="hv-stack-bar">
-                            <span class="hv-stack-fill" :style="{ '--bar-w': `${75 + (index % 3) * 8}%` }"></span>
-                        </span>
-                    </li>
-                </ul>
+            <div class="hero-float hero-float--code" data-animate="fade-up" style="--delay: 0.45s" aria-hidden="true">
+                <div class="hf-card">
+                    <div class="hf-bar"><i></i><i></i><i></i></div>
+                    <span class="hf-line" style="--w: 58%; --c: var(--accent)"></span>
+                    <span class="hf-line hf-line--in" style="--w: 74%"></span>
+                    <span class="hf-line hf-line--in" style="--w: 44%; --c: var(--accent-2)"></span>
+                    <span class="hf-line" style="--w: 30%; --c: var(--accent-3)"></span>
+                </div>
+            </div>
 
-                <!-- Bottom: availability strip -->
-                <div class="hv-availability">
-                    <span class="hv-avail-dot"></span>
-                    <span class="hv-avail-text">{{ t('hero.visual.availableForProjects') }}</span>
-                    <span class="hv-avail-pill">{{ new Date().getFullYear() }}</span>
+            <div class="hero-float hero-float--speed" data-animate="fade-up" style="--delay: 0.6s" aria-hidden="true">
+                <div class="hf-card">
+                    <span class="hf-gauge">
+                        <svg viewBox="0 0 36 36">
+                            <circle class="hf-gauge-track" cx="18" cy="18" r="15" />
+                            <circle class="hf-gauge-fill" cx="18" cy="18" r="15" pathLength="100" />
+                        </svg>
+                        <font-awesome-icon :icon="['fas', 'bolt']" />
+                    </span>
+                    <span class="hf-stat">
+                        <span class="hf-stat-label">{{ t('about.metrics.avgLoad') }}</span>
+                        <span class="hf-stat-value">0.8s</span>
+                    </span>
                 </div>
             </div>
         </div>
@@ -127,23 +162,261 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
 
 // ── Hero layout ────────────────────────────────────────────────────────────
 .hero {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: clamp(24px, 4vw, 64px);
+    gap: 40px clamp(24px, 4vw, 64px);
     align-items: center;
     animation: fadeInUp 0.8s ease-out;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: -200px;
+        bottom: -90px;
+        left: 50%;
+        z-index: -1;
+        width: 100vw;
+        transform: translateX(-50%);
+        pointer-events: none;
+    }
+
+    &::before {
+        background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+        background-size: 44px 44px;
+        -webkit-mask-image: radial-gradient(ellipse 62% 72% at 70% 46%, #000 15%, transparent 72%);
+        mask-image: radial-gradient(ellipse 62% 72% at 70% 46%, #000 15%, transparent 72%);
+    }
+
+    &::after {
+        background:
+            radial-gradient(26% 40% at 26% 50%, rgba(255, 106, 91, 0.08), transparent 100%),
+            radial-gradient(30% 44% at 30% 56%, var(--glow-amber), transparent 100%);
+    }
 }
 
 .hero-content {
     max-width: 520px;
 }
 
-// ── Right visual ───────────────────────────────────────────────────────────
-.hero-visual {
+// ── Stage: artwork behind, card, glass chips in front ──────────────────────
+.hero-stage {
+    --stage-glow-1: rgba(255, 106, 91, 0.22);
+    --stage-glow-2: rgba(248, 194, 78, 0.3);
+    --stage-glow-3: rgba(45, 180, 164, 0.18);
+
     position: relative;
     width: 100%;
     max-width: 480px;
     justify-self: end;
+}
+
+.hero-art {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    span {
+        position: absolute;
+    }
+}
+
+.ha-glow {
+    inset: -40% -30% -40% -50%;
+    background:
+        radial-gradient(34% 30% at 64% 32%, var(--stage-glow-2), transparent 100%),
+        radial-gradient(30% 28% at 32% 68%, var(--stage-glow-3), transparent 100%),
+        radial-gradient(36% 34% at 50% 52%, var(--stage-glow-1), transparent 100%);
+}
+
+.ha-rings {
+    left: -220px;
+    bottom: -220px;
+    width: 440px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: repeating-radial-gradient(circle, transparent 0 43px, var(--border) 43px 44px);
+    -webkit-mask-image: radial-gradient(circle, #000 30%, transparent 70%);
+    mask-image: radial-gradient(circle, #000 30%, transparent 70%);
+}
+
+.ha-orbit {
+    left: -132px;
+    bottom: -132px;
+    width: 264px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    transform: rotate(-58deg);
+    animation: heroOrbit 36s linear infinite;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -4px;
+        left: 50%;
+        width: 8px;
+        height: 8px;
+        margin-left: -4px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 0 4px rgba(255, 106, 91, 0.18);
+    }
+}
+
+@keyframes heroOrbit {
+    to {
+        transform: rotate(302deg);
+    }
+}
+
+.ha-dots {
+    top: 56px;
+    left: -62px;
+    width: 71px;
+    height: 57px;
+    background: radial-gradient(circle, var(--muted) 1.1px, transparent 1.6px) 0 0 / 14px 14px;
+    opacity: 0.45;
+}
+
+// ── Floating glass chips ───────────────────────────────────────────────────
+.hero-float {
+    position: absolute;
+    z-index: 3;
+    pointer-events: none;
+
+    &--code {
+        top: 43%;
+        left: -118px;
+        width: 138px;
+    }
+
+    &--speed {
+        top: -38px;
+        right: 22px;
+
+        .hf-card {
+            animation-delay: -3.5s;
+        }
+    }
+}
+
+.hf-card {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 12px 16px 12px 12px;
+    border: 1px solid var(--border);
+    background: var(--glass);
+    -webkit-backdrop-filter: blur(14px) saturate(1.5);
+    backdrop-filter: blur(14px) saturate(1.5);
+    box-shadow:
+        inset 0 1px 0 var(--glass-edge),
+        0 16px 36px rgba(20, 20, 20, 0.14);
+    animation: heroFloat 7s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.hero-float--code .hf-card {
+    display: grid;
+    gap: 7px;
+    padding: 12px 14px 14px;
+}
+
+.hf-bar {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 3px;
+
+    i {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: rgba(128, 128, 128, 0.45);
+    }
+}
+
+.hf-line {
+    display: block;
+    width: var(--w, 60%);
+    height: 5px;
+    border-radius: 999px;
+    background: var(--c, rgba(128, 128, 128, 0.35));
+
+    &--in {
+        margin-left: 14px;
+    }
+}
+
+.hf-gauge {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    color: var(--accent-2-ink);
+    font-size: 0.8rem;
+
+    svg:first-child {
+        position: absolute;
+        inset: 0;
+        transform: rotate(-90deg);
+    }
+}
+
+.hf-gauge-track,
+.hf-gauge-fill {
+    fill: none;
+    stroke-width: 3;
+}
+
+.hf-gauge-track {
+    stroke: var(--border);
+}
+
+.hf-gauge-fill {
+    stroke: var(--accent-2);
+    stroke-linecap: round;
+    stroke-dasharray: 86 100;
+}
+
+.hf-stat {
+    display: grid;
+    gap: 2px;
+}
+
+.hf-stat-label {
+    font-family: $font-heading;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.hf-stat-value {
+    font-family: $font-heading;
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--text);
+}
+
+// ── Right visual ───────────────────────────────────────────────────────────
+.hero-visual {
+    position: relative;
+    width: 100%;
     border: 1px solid var(--border);
     background: var(--surface);
     box-shadow: var(--shadow);
@@ -301,7 +574,7 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
     font-size: 1.8rem;
     font-weight: 800;
     line-height: 1;
-    background: linear-gradient(135deg, var(--accent), var(--accent-3));
+    background: var(--title-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -471,13 +744,64 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
     .hv-status-badge {
         background: #16181d;
     }
+
+    .hero-stage {
+        --stage-glow-1: rgba(255, 106, 91, 0.16);
+        --stage-glow-2: rgba(248, 194, 78, 0.1);
+        --stage-glow-3: rgba(45, 180, 164, 0.14);
+    }
+
+    .hf-card {
+        box-shadow:
+            inset 0 1px 0 var(--glass-edge),
+            0 16px 36px rgba(0, 0, 0, 0.5);
+    }
 }
 
 // ── Responsive ─────────────────────────────────────────────────────────────
+@media (max-width: 1240px) {
+    .hero-float--code,
+    .ha-dots {
+        display: none;
+    }
+
+    .ha-rings {
+        left: -150px;
+        bottom: -150px;
+        width: 300px;
+    }
+
+    .ha-orbit {
+        left: -88px;
+        bottom: -88px;
+        width: 176px;
+    }
+}
+
+// Below this the card is too narrow for the chip to sit beside the status badge.
+@media (max-width: 960px) {
+    .hero-float--speed {
+        top: auto;
+        right: 16px;
+        bottom: -50px;
+    }
+}
+
 @media (max-width: 900px) {
-    .hero-visual {
+    .hero-stage {
         max-width: 440px;
         justify-self: center;
+    }
+}
+
+@media (max-width: 720px) {
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-stage {
+        max-width: 520px;
+        justify-self: start;
     }
 }
 
@@ -501,6 +825,8 @@ $font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
 // ── Reduced motion ─────────────────────────────────────────────────────────
 @media (prefers-reduced-motion: reduce) {
     .hv-scan,
+    .ha-orbit,
+    .hf-card,
     .hv-status-dot,
     .hv-avail-dot,
     .hv-stack-fill,

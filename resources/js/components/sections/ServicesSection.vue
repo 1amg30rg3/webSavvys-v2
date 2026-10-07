@@ -32,6 +32,7 @@ const getServiceIcon = (index: number) => serviceIcons[index % serviceIcons.leng
                 data-animate="fade-up"
                 :data-delay="index * 150"
             >
+                <span class="service-index" aria-hidden="true">{{ String(index + 1).padStart(2, '0') }}</span>
                 <div class="service-icon">
                     <font-awesome-icon :icon="['fas', getServiceIcon(index)]" />
                 </div>

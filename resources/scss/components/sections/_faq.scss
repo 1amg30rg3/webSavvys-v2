@@ -5,7 +5,21 @@
 .faq-accordion {
     display: grid;
     gap: 16px;
-    margin-top: 32px;
+}
+
+@media (min-width: 1101px) {
+    .section-faq {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+        gap: clamp(40px, 5vw, 80px);
+        align-items: start;
+
+        .section-header {
+            position: sticky;
+            top: 110px;
+            margin-bottom: 0;
+        }
+    }
 }
 
 .faq-accordion-item {
@@ -44,20 +58,25 @@
     transition: all 0.3s ease;
 
     &:hover {
-        color: var(--accent);
+        color: var(--accent-ink);
+    }
+
+    &:focus-visible {
+        outline-offset: -3px;
     }
 }
 
 .faq-icon {
     flex-shrink: 0;
     transition: transform 0.3s ease;
-    color: var(--accent);
+    color: var(--accent-ink);
 }
 
 .faq-answer {
     padding: 0 28px 24px;
 
     p {
+        max-width: 72ch;
         margin: 0;
         color: var(--muted);
         line-height: 1.8;
@@ -69,10 +88,12 @@
     display: grid;
     grid-template-rows: 0fr;
     opacity: 0;
+    visibility: hidden;
     transform: translateY(-4px);
     transition:
         grid-template-rows 0.32s cubic-bezier(0.22, 1, 0.36, 1),
         opacity 0.24s ease,
+        visibility 0.32s,
         transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
 
     .faq-answer {
@@ -85,6 +106,7 @@
     &.is-open {
         grid-template-rows: 1fr;
         opacity: 1;
+        visibility: visible;
         transform: translateY(0);
 
         .faq-answer {

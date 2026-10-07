@@ -22,9 +22,13 @@
     flex-wrap: wrap;
     position: relative;
     padding: 10px 7px;
-    backdrop-filter: blur(20px);
+    background: var(--glass);
+    -webkit-backdrop-filter: blur(20px) saturate(1.6);
+    backdrop-filter: blur(20px) saturate(1.6);
     animation: fadeInDown 0.6s ease-out;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    box-shadow:
+        inset 0 1px 0 var(--glass-edge),
+        0 4px 20px rgba(0, 0, 0, 0.03);
     transition:
         box-shadow 0.35s ease,
         border-color 0.35s ease,
@@ -34,15 +38,19 @@
     border-radius: 22px;
 
     &:hover {
-        box-shadow: 0 6px 30px rgba(0, 0, 0, 0.06);
+        box-shadow:
+            inset 0 1px 0 var(--glass-edge),
+            0 6px 30px rgba(0, 0, 0, 0.06);
     }
 }
 
 .site-header.is-scrolled .site-header-inner {
     padding: 6px 7px;
     border-color: rgba(255, 106, 91, 0.25);
-    box-shadow: 0 10px 34px rgba(0, 0, 0, 0.08);
-    background: var(--surface);
+    box-shadow:
+        inset 0 1px 0 var(--glass-edge),
+        0 10px 34px rgba(0, 0, 0, 0.08);
+    background: var(--glass-strong);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -53,10 +61,6 @@
             transform: none;
         }
     }
-}
-
-:root[data-theme='dark'] .site-header {
-    background: rgba(12, 13, 15, 0.95);
 }
 
 // ── Logo ──────────────────────────────────────────────────────────────────────

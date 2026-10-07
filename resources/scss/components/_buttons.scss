@@ -100,7 +100,9 @@
 .primary-button {
     background: linear-gradient(135deg, var(--accent), var(--accent-3));
     color: #1a1a1a;
-    box-shadow: 0 12px 30px rgba(255, 106, 91, 0.35);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        0 12px 30px rgba(255, 106, 91, 0.35);
     border: none;
 
     &::before {
@@ -109,7 +111,9 @@
 
     &:hover {
         transform: translateY(-3px);
-        box-shadow: 0 20px 40px rgba(255, 106, 91, 0.45);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.4),
+            0 20px 40px rgba(255, 106, 91, 0.45);
 
         &::before {
             width: 300px;

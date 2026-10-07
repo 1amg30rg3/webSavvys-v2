@@ -17,6 +17,51 @@ main,
 
 // ── Section Spacing ───────────────────────────────────────────────────────────
 section {
-    margin: 150px 0;
+    margin: clamp(80px, 10vw, 150px) 0;
     scroll-margin-top: 120px;
+}
+
+// ── Atmosphere ────────────────────────────────────────────────────────────────
+// Decorative layers bleed past the container; clip keeps them out of the scroll width.
+main {
+    overflow-x: clip;
+}
+
+main > .container > section {
+    position: relative;
+}
+
+// Glows sit above each section's top edge so they bridge the divider.
+#pricing::before,
+#services::before,
+#flow::before,
+#faq::before {
+    content: '';
+    position: absolute;
+    top: -260px;
+    z-index: -1;
+    width: min(720px, 92vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+#pricing::before {
+    right: 0;
+    background: radial-gradient(closest-side, var(--glow-teal), transparent);
+}
+
+#services::before {
+    left: 0;
+    background: radial-gradient(closest-side, var(--glow-coral), transparent);
+}
+
+#flow::before {
+    right: 0;
+    background: radial-gradient(closest-side, var(--glow-amber), transparent);
+}
+
+#faq::before {
+    left: 0;
+    background: radial-gradient(closest-side, var(--glow-teal), transparent);
 }

@@ -21,11 +21,11 @@ const year = computed(() => new Date().getFullYear());
 
             <nav class="footer-links" :aria-label="t('footer.linksTitle')">
                 <p class="footer-heading">{{ t('footer.linksTitle') }}</p>
-                <a href="#services">{{ t('services.title') }}</a>
-                <a href="#flow">{{ t('flow.title') }}</a>
+                <a href="#services">{{ t('services.navLabel') }}</a>
+                <a href="#flow">{{ t('flow.navLabel') }}</a>
                 <a href="#pricing">{{ t('pricing.navLabel') }}</a>
-                <a href="#faq">{{ t('faq.title') }}</a>
-                <a href="#contact">{{ t('contact.title') }}</a>
+                <a href="#faq">{{ t('faq.navLabel') }}</a>
+                <a href="#contact">{{ t('contact.navLabel') }}</a>
             </nav>
 
             <div v-if="social.length" class="footer-social">
@@ -44,6 +44,8 @@ const year = computed(() => new Date().getFullYear());
                 </div>
             </div>
         </div>
+
+        <div class="footer-wordmark container" aria-hidden="true">WebSavvys</div>
 
         <div class="footer-bottom container">
             <span>{{ t('footer.copyright', { year }) }}</span>

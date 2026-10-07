@@ -56,6 +56,7 @@
     "services": {
         "eyebrow": "What We Offer",
         "title": "Our Services",
+        "navLabel": "Services",
         "description": "Every solution is custom-built, scalable, and designed to meet your specific business requirements.",
         "items": [
             {
@@ -87,6 +88,7 @@
     "flow": {
         "eyebrow": "Our Process",
         "title": "How We Work",
+        "navLabel": "Process",
         "subtitle": "A transparent, step-by-step process designed for clarity and results.",
         "steps": [
             {
@@ -118,6 +120,7 @@
     "faq": {
         "eyebrow": "Got Questions?",
         "title": "Frequently Asked Questions",
+        "navLabel": "FAQ",
         "items": [
             {
                 "q": "How long does a typical project take?",
@@ -236,6 +239,7 @@
     "contact": {
         "eyebrow": "Let's Talk",
         "title": "Let's Build Something Great",
+        "navLabel": "Contact",
         "text": "Ready to start your project? Tell us about your idea, and we'll create a custom solution that fits your goals, budget, and timeline. No templates, no compromises - just quality work tailored to you.",
         "cta": "Send Us an Email",
         "emailLabel": "Email Us",

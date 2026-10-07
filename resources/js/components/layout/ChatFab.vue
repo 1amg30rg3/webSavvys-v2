@@ -11,6 +11,6 @@ const { t } = useI18n();
 <template>
     <a class="chat-fab" :href="chatUrl" target="_blank" rel="noopener" aria-label="Live chat">
         <font-awesome-icon :icon="['fas', 'comments']" />
-        {{ t('contact.chatLabel') }}
+        <span class="chat-fab-label">{{ t('contact.chatLabel') }}</span>
     </a>
 </template>

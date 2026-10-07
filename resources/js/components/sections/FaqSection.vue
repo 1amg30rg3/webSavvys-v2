@@ -25,14 +25,20 @@ const toggleFaq = (index: number) => {
         </div>
         <div class="faq-accordion stagger-children">
             <div v-for="(item, index) in faqItems" :key="item.q" class="faq-accordion-item" :class="{ 'is-open': openFaqIndex === index }">
-                <button class="faq-question" @click="toggleFaq(index)" type="button">
+                <button
+                    class="faq-question"
+                    type="button"
+                    :aria-expanded="openFaqIndex === index"
+                    :aria-controls="`faq-answer-${index}`"
+                    @click="toggleFaq(index)"
+                >
                     <span>
                         <font-awesome-icon :icon="['fa-regular', 'fa-circle']" />
                         {{ item.q }}
                     </span>
                     <font-awesome-icon :icon="['fas', 'arrow-right']" class="faq-icon" />
                 </button>
-                <div class="faq-answer-wrap" :class="{ 'is-open': openFaqIndex === index }">
+                <div :id="`faq-answer-${index}`" class="faq-answer-wrap" :class="{ 'is-open': openFaqIndex === index }">
                     <div class="faq-answer">
                         <p>{{ item.a }}</p>
                     </div>

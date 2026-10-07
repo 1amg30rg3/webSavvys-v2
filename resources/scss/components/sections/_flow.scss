@@ -15,9 +15,12 @@
     grid-template-columns: auto 1fr;
     gap: 24px;
     padding: 28px;
-    background: var(--surface);
+    background:
+        linear-gradient(90deg, var(--accent), var(--accent-3)) left bottom / calc(var(--progress, 0) * 100%) 2px no-repeat,
+        linear-gradient(var(--border), var(--border)) left bottom / 100% 2px no-repeat,
+        var(--surface);
     border: 1px solid var(--border);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-card);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
@@ -37,7 +40,7 @@
 
     &:hover {
         transform: translateX(8px);
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+        box-shadow: var(--shadow-card-hover);
         border-color: var(--accent);
 
         &::before {

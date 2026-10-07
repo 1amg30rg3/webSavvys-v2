@@ -28,6 +28,7 @@ const flowSteps = computed(() => (tm('flow.steps') as Array<{ title: string; des
                 v-tilt
                 data-animate="fade-up"
                 :data-delay="index * 100"
+                :style="{ '--progress': (index + 1) / flowSteps.length }"
             >
                 <div class="flow-step-number">{{ index + 1 }}</div>
                 <div class="flow-step-content">
