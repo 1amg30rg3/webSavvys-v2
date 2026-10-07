@@ -12,6 +12,24 @@
     $seoCanonical = $seoConfig['url'].$seoLocaleConfig['path'];
     $seoImageUrl = $seoConfig['url'].($seoLocaleConfig['image'] ?? $seoConfig['default_image']);
 
+    $seoPrices = config('pricing.types');
+    $seoCurrency = config('pricing.currencies')[$seoLocale] ?? 'gel';
+    $seoOffers = array_map(function ($type) use ($seoPrices, $seoCurrency) {
+        $price = $seoPrices[$type['key']][$seoCurrency] ?? null;
+
+        return [
+            '@type' => 'Offer',
+            'itemOffered' => [
+                '@type' => 'Service',
+                'name' => $type['name'],
+                'description' => implode('. ', $type['features']).'.',
+            ],
+            ...($price !== null
+                ? ['priceSpecification' => ['@type' => 'PriceSpecification', 'minPrice' => $price, 'priceCurrency' => strtoupper($seoCurrency)]]
+                : []),
+        ];
+    }, $seoI18n['pricing']['types'] ?? []);
+
     $seoJsonLd = [
         [
             '@context' => 'https://schema.org',
@@ -27,6 +45,9 @@
                 'name' => $seoConfig['organization']['founder'],
                 'jobTitle' => $seoI18n['developer']['role'] ?? null,
             ],
+            ...(count($seoOffers)
+                ? ['hasOfferCatalog' => ['@type' => 'OfferCatalog', 'name' => $seoI18n['pricing']['eyebrow'], 'itemListElement' => $seoOffers]]
+                : []),
             ...(count($seoConfig['social'])
                 ? ['sameAs' => array_values(array_map(fn ($s) => $s['url'], $seoConfig['social']))]
                 : []),

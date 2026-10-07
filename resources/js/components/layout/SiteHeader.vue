@@ -20,7 +20,7 @@ const isMenuOpen = ref(false);
 const MOBILE_BREAKPOINT = 1750;
 let mediaQuery: MediaQueryList | null = null;
 
-const { activeId } = useActiveSection(['services', 'flow', 'payment', 'faq', 'contact']);
+const { activeId } = useActiveSection(['pricing', 'services', 'flow', 'faq', 'contact']);
 
 const isScrolled = ref(false);
 const isHeaderHidden = ref(false);
@@ -100,6 +100,10 @@ onBeforeUnmount(() => {
                 </span>
             </a>
             <nav class="nav-links" aria-label="Primary">
+                <a href="#pricing" :class="{ 'is-active': activeId === 'pricing' }">
+                    <font-awesome-icon :icon="['fas', 'tag']" />
+                    {{ t('pricing.navLabel') }}
+                </a>
                 <a href="#services" :class="{ 'is-active': activeId === 'services' }">
                     <font-awesome-icon :icon="['fas', 'layer-group']" />
                     {{ t('services.title') }}
@@ -107,10 +111,6 @@ onBeforeUnmount(() => {
                 <a href="#flow" :class="{ 'is-active': activeId === 'flow' }">
                     <font-awesome-icon :icon="['fas', 'route']" />
                     {{ t('flow.title') }}
-                </a>
-                <a href="#payment" :class="{ 'is-active': activeId === 'payment' }">
-                    <font-awesome-icon :icon="['fas', 'credit-card']" />
-                    {{ t('payment.title') }}
                 </a>
                 <a href="#faq" :class="{ 'is-active': activeId === 'faq' }">
                     <font-awesome-icon :icon="['fas', 'question-circle']" />
@@ -122,6 +122,10 @@ onBeforeUnmount(() => {
                 </a>
             </nav>
             <nav id="mobile-nav" class="mobile-nav" :class="{ 'is-open': isMenuOpen }" aria-label="Mobile">
+                <a href="#pricing" @click="closeMenu">
+                    <font-awesome-icon :icon="['fas', 'tag']" />
+                    {{ t('pricing.navLabel') }}
+                </a>
                 <a href="#about" @click="closeMenu">
                     <font-awesome-icon :icon="['fas', 'info-circle']" />
                     {{ t('about.title') }}
@@ -137,14 +141,6 @@ onBeforeUnmount(() => {
                 <a href="#flow" @click="closeMenu">
                     <font-awesome-icon :icon="['fas', 'route']" />
                     {{ t('flow.title') }}
-                </a>
-                <a href="#payment" @click="closeMenu">
-                    <font-awesome-icon :icon="['fas', 'credit-card']" />
-                    {{ t('payment.title') }}
-                </a>
-                <a href="#pricing" @click="closeMenu">
-                    <font-awesome-icon :icon="['fas', 'tag']" />
-                    {{ t('pricing.title') }}
                 </a>
                 <a href="#faq" @click="closeMenu">
                     <font-awesome-icon :icon="['fas', 'question-circle']" />

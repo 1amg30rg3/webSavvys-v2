@@ -34,9 +34,20 @@ export interface SeoDefaults {
     defaultLocale: string;
 }
 
+export interface PricingTypePrice {
+    gel: number | null;
+    usd: number | null;
+}
+
+export interface PricingConfig {
+    currencies: Record<string, keyof PricingTypePrice>;
+    types: Record<string, PricingTypePrice>;
+}
+
 export type AppPageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
     name: string;
     auth: Auth;
     seoDefaults: SeoDefaults;
+    pricing: PricingConfig;
     [key: string]: unknown;
 };

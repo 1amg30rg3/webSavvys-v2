@@ -27,6 +27,26 @@ const seo = computed(() => page.props.seoDefaults);
 
 const socialUrls = computed(() => Object.values(seo.value.social).map((entry) => entry.url));
 
+const offers = computed(() => {
+    const currency = page.props.pricing.currencies[locale.value] ?? 'gel';
+
+    return (tm('pricing.types') as Array<{ key: string; name: string; features: string[] }>).map((type) => {
+        const price = page.props.pricing.types[type.key]?.[currency] ?? null;
+
+        return {
+            '@type': 'Offer',
+            itemOffered: {
+                '@type': 'Service',
+                name: type.name,
+                description: `${type.features.join('. ')}.`,
+            },
+            ...(price !== null
+                ? { priceSpecification: { '@type': 'PriceSpecification', minPrice: price, priceCurrency: currency.toUpperCase() } }
+                : {}),
+        };
+    });
+});
+
 const organizationSchema = computed(() => ({
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
@@ -41,6 +61,7 @@ const organizationSchema = computed(() => ({
         name: t('developer.name'),
         jobTitle: t('developer.role'),
     },
+    ...(offers.value.length ? { hasOfferCatalog: { '@type': 'OfferCatalog', name: t('pricing.eyebrow'), itemListElement: offers.value } } : {}),
     ...(socialUrls.value.length ? { sameAs: socialUrls.value } : {}),
 }));
 

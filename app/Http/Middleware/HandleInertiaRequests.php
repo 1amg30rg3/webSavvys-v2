@@ -53,6 +53,7 @@ class HandleInertiaRequests extends Middleware
                 'locales' => config('seo.locales'),
                 'defaultLocale' => config('seo.default_locale'),
             ],
+            'pricing' => config('pricing'),
         ];
     }
 }

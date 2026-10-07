@@ -10,7 +10,7 @@
         "title": "We Build Custom Websites & Web Apps Tailored to Your Business",
         "subtitle": "WebSavvys delivers modern, scalable web solutions designed around your unique needs. Every project is custom-built using cutting-edge technologies - no templates, no shortcuts.",
         "cta": "Start Your Project",
-        "secondaryCta": "Explore Services",
+        "secondaryCta": "See Prices",
         "stackTitle": "Technologies We Use",
         "visual": {
             "coordStack": "WS / STACK",
@@ -115,27 +115,13 @@
             }
         ]
     },
-    "payment": {
-        "eyebrow": "Transparent Pricing",
-        "title": "Payment Terms",
-        "subtitle": "Simple, transparent pricing structure",
-        "advance": {
-            "title": "30% Advance Payment",
-            "description": "Required before project kickoff to secure your spot and begin work"
-        },
-        "final": {
-            "title": "70% Final Payment",
-            "description": "Due upon project completion and delivery, before going live"
-        },
-        "note": "We believe in transparency. You'll know exactly what you're paying for, with no hidden fees or surprise costs."
-    },
     "faq": {
         "eyebrow": "Got Questions?",
         "title": "Frequently Asked Questions",
         "items": [
             {
                 "q": "How long does a typical project take?",
-                "a": "Project timelines vary based on complexity and scope. A standard website takes 3–6 weeks, while more complex web applications can take 8–12 weeks. Timeline depends on content readiness, feedback speed, and feature requirements."
+                "a": "It depends on the type of website. A landing page takes about 5 days, a business website 1–3 weeks and an online store 3–6 weeks. Custom web applications usually take 8–12 weeks. Timelines also depend on content readiness, feedback speed, and feature requirements."
             },
             {
                 "q": "Do I need technical knowledge to work with you?",
@@ -173,30 +159,78 @@
         "portfolio": "ggavasheli.com"
     },
     "pricing": {
-        "eyebrow": "Investment",
-        "title": "Custom Pricing",
-        "text": "Every project is unique, so pricing is tailored to your specific needs and scope. Contact us for a detailed quote based on your requirements. We'll provide a clear breakdown with no hidden costs.",
-        "highlights": {
-            "noHiddenFees": "No hidden fees, ever",
-            "milestonePayments": "Milestone-based payments",
-            "scopeOrRetainer": "Fixed-scope or retainer options",
-            "discoveryCall": "Free discovery call included"
+        "eyebrow": "Websites & Pricing",
+        "title": "What We Build and What It Costs",
+        "text": "Choose the type of website you need. Every price is a starting point for a custom build, and you get a fixed quote before any work begins.",
+        "navLabel": "Pricing",
+        "priceFrom": "from {price}",
+        "amount": "{'$'}{amount}",
+        "customPrice": "Custom pricing",
+        "customNote": "Quoted after a free discovery call",
+        "deliveryLabel": "Delivery",
+        "cta": "Get a quote",
+        "ctaCustom": "Discuss your project",
+        "preview": {
+            "open": "Preview",
+            "eyebrow": "Interactive demo · example design",
+            "typesLabel": "Website type",
+            "deviceLabel": "Screen size",
+            "desktop": "Desktop",
+            "mobile": "Mobile",
+            "close": "Close preview",
+            "domain": "yourdomain.com",
+            "note": "Click around: the buttons, menus and forms work. Your own site is designed individually for your brand."
         },
-        "metrics": {
-            "coordPricing": "WS / PRICING",
-            "paymentStructure": "Payment Structure",
-            "upfront": "30% Upfront",
-            "onDelivery": "70% on Delivery",
-            "launch": "Launch",
-            "days": "days",
-            "fixedPrice": "Fixed Price",
-            "always": "Always",
-            "revisions": "Revisions",
-            "whatsIncluded": "What's included",
-            "includedValue": "Design + Dev + Deploy",
-            "afterLaunch": "After launch",
-            "afterLaunchValue": "30-day Support",
-            "acceptingProjects": "Accepting new projects"
+        "types": [
+            {
+                "key": "landing",
+                "name": "Landing Page",
+                "bestFor": "One product, service or campaign",
+                "delivery": "5 days",
+                "features": ["One-page custom design", "Clear call to action: form, call or WhatsApp", "Fast loading on mobile"],
+                "message": "Hi! I'd like a quote for a landing page."
+            },
+            {
+                "key": "business",
+                "name": "Business Website",
+                "bestFor": "Companies that need a full online presence",
+                "delivery": "1–3 weeks",
+                "features": ["Multi-page custom design", "Home, about, services and contact pages", "Structure built for Google search"],
+                "message": "Hi! I'd like a quote for a business website."
+            },
+            {
+                "key": "ecommerce",
+                "name": "E-commerce Website",
+                "bestFor": "Selling products online",
+                "delivery": "3–6 weeks",
+                "features": ["Product catalog with categories", "Cart, checkout and online payments", "Admin panel for products and orders"],
+                "message": "Hi! I'd like a quote for an e-commerce website."
+            },
+            {
+                "key": "webapp",
+                "name": "Custom Web Application",
+                "bestFor": "Custom business processes and SaaS products",
+                "delivery": "8–12 weeks",
+                "features": [
+                    "CRM, booking, dashboards and internal tools",
+                    "User accounts, roles and permissions",
+                    "API and third-party integrations"
+                ],
+                "message": "Hi! I'd like to discuss a custom web application."
+            }
+        ],
+        "included": {
+            "title": "Included in every project",
+            "items": ["Design, development and deployment", "Mobile-first build", "SEO-ready structure", "30 days of support after launch"]
+        },
+        "terms": {
+            "title": "Payment terms",
+            "items": [
+                "30% in advance, before the project starts",
+                "70% on delivery, before going live",
+                "Fixed price agreed before work begins",
+                "No hidden fees"
+            ]
         }
     },
     "contact": {
@@ -208,8 +242,32 @@
         "phoneLabel": "Call Us",
         "chatLabel": "Chat on WhatsApp",
         "chatMethodLabel": "Live Chat",
-        "chatUrl": "https://wa.me/555219234",
-        "chatCta": "Start a Conversation"
+        "chatUrl": "https://wa.me/995555219234",
+        "form": {
+            "title": "Tell us what you need",
+            "text": "Leave your details and we'll get in touch to discuss your project.",
+            "name": "Your name",
+            "phone": "Phone number",
+            "phoneHint": "Digits only, for example +995 555 12 34 56",
+            "type": "What do you need?",
+            "typeUnsure": "Not sure yet",
+            "message": "Message",
+            "optional": "optional",
+            "messagePlaceholder": "A few words about your business or idea",
+            "submit": "Send request",
+            "sending": "Sending…",
+            "consent": "By sending this form you agree that we contact you about your request.",
+            "successTitle": "Thank you, {name}!",
+            "successText": "We have received your request and will contact you soon.",
+            "again": "Send another request",
+            "errors": {
+                "name": "Please enter your name.",
+                "phone": "Please enter a valid phone number.",
+                "generic": "Your request could not be sent. Please try again or",
+                "throttled": "Too many attempts. Please wait a minute and try again, or",
+                "whatsapp": "write to us on WhatsApp."
+            }
+        }
     },
     "footer": {
         "note": "WebSavvys - Custom web solutions built for your success.",

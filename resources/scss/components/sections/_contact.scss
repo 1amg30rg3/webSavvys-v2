@@ -42,6 +42,10 @@
 .contact-wrapper {
     position: relative;
     z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+    gap: clamp(32px, 5vw, 72px);
     margin: 0 auto;
 }
 
@@ -65,9 +69,8 @@
 // ── Method cards ───────────────────────────────────────────────────────────
 .contact-methods {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: 1fr;
     gap: 10px;
-    margin-bottom: 36px;
 }
 
 .contact-method {
@@ -164,9 +167,198 @@
     }
 }
 
-// ── CTA ───────────────────────────────────────────────────────────────────
-.contact-cta {
+// ── Request form (ContactForm.vue) ─────────────────────────────────────────
+.contact-form-card {
+    padding: clamp(22px, 3vw, 34px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 24px 60px rgba(26, 26, 26, 0.18);
+    color: #1a1a1a;
+}
+
+.contact-form {
+    position: relative;
+    display: grid;
+    gap: 14px;
+}
+
+.contact-form-title {
+    margin: 0;
+    font-family: $font-heading;
+    font-size: 1.35rem;
+}
+
+.contact-form-text {
+    margin: -6px 0 4px;
+    color: rgba(26, 26, 26, 0.65);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.contact-form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.contact-field {
+    display: grid;
+    gap: 6px;
+
+    > span {
+        font-family: $font-heading;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(26, 26, 26, 0.6);
+
+        em {
+            margin-left: 4px;
+            font-style: normal;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            text-transform: none;
+            color: rgba(26, 26, 26, 0.45);
+        }
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid rgba(26, 26, 26, 0.18);
+        border-radius: 0;
+        background: #ffffff;
+        color: #1a1a1a;
+        font: inherit;
+        font-size: 0.95rem;
+        user-select: text;
+        transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+
+        &:focus {
+            outline: 0;
+            border-color: #1a1a1a;
+            box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.12);
+        }
+    }
+
+    textarea {
+        min-height: 96px;
+        resize: vertical;
+    }
+
+    small {
+        color: #b3261e;
+        font-size: 0.8rem;
+    }
+
+    &.has-error input {
+        border-color: #b3261e;
+    }
+}
+
+.contact-form-trap {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.contact-form-failure {
+    margin: 0;
+    padding: 12px 14px;
+    border: 1px solid rgba(179, 38, 30, 0.3);
+    background: rgba(179, 38, 30, 0.07);
+    color: #8c1d18;
+    font-size: 0.9rem;
+    line-height: 1.5;
+
+    a {
+        font-weight: 700;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+}
+
+.contact-form-submit {
+    width: 100%;
+    font-family: inherit;
+    cursor: pointer;
+
+    &:disabled {
+        opacity: 0.65;
+        cursor: progress;
+    }
+}
+
+.contact-form-note {
+    margin: 0;
+    color: rgba(26, 26, 26, 0.55);
+    font-size: 0.78rem;
+    line-height: 1.5;
     text-align: center;
+}
+
+.contact-form-success {
+    display: grid;
+    justify-items: center;
+    gap: 12px;
+    padding: 20px 4px 8px;
+    text-align: center;
+
+    h3 {
+        margin: 0;
+        font-family: $font-heading;
+        font-size: 1.4rem;
+    }
+
+    > p:not(.contact-form-note) {
+        max-width: 420px;
+        margin: 0 0 6px;
+        color: rgba(26, 26, 26, 0.7);
+        line-height: 1.6;
+    }
+}
+
+.contact-form-success-icon {
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    color: var(--accent-3);
+    font-size: 1.7rem;
+}
+
+.contact-form-link {
+    padding: 4px;
+    border: 0;
+    background: none;
+    color: #1a1a1a;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form-row {
+        grid-template-columns: 1fr;
+    }
 }
 
 .primary-button-large {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Lead;
 use App\Models\Visit;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
@@ -173,6 +174,7 @@ class DashboardController extends Controller
             'recent' => $recent,
             'visitor' => $visitor,
             'excludedIps' => config('admin.excluded_ips'),
+            'newLeads' => Lead::where('status', 'new')->count(),
         ]);
     }
 

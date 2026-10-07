@@ -45,7 +45,7 @@ const { value: ratingCount } = useCountUp(heroVisualRef, 5);
                     <font-awesome-icon :icon="['fas', 'rocket']" />
                     {{ t('hero.cta') }}
                 </a>
-                <a class="ghost-button" ref="ghostButtonRef" href="#services">
+                <a class="ghost-button" ref="ghostButtonRef" href="#pricing">
                     {{ t('hero.secondaryCta') }}
                     <font-awesome-icon :icon="['fas', 'arrow-right']" />
                 </a>

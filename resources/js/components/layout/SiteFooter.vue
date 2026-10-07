@@ -23,7 +23,7 @@ const year = computed(() => new Date().getFullYear());
                 <p class="footer-heading">{{ t('footer.linksTitle') }}</p>
                 <a href="#services">{{ t('services.title') }}</a>
                 <a href="#flow">{{ t('flow.title') }}</a>
-                <a href="#pricing">{{ t('pricing.title') }}</a>
+                <a href="#pricing">{{ t('pricing.navLabel') }}</a>
                 <a href="#faq">{{ t('faq.title') }}</a>
                 <a href="#contact">{{ t('contact.title') }}</a>
             </nav>

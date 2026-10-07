@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Head, router } from '@inertiajs/vue3';
+import { Head, Link, router } from '@inertiajs/vue3';
 import { onClickOutside, useDebounceFn } from '@vueuse/core';
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 
@@ -50,6 +50,7 @@ const props = defineProps<{
     recent: Paginated<Hit>;
     visitor: Visitor | null;
     excludedIps: string[];
+    newLeads: number;
 }>();
 
 type Query = Record<string, string | number>;
@@ -284,6 +285,9 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKey));
                 <span class="eyebrow">Admin</span>
             </div>
             <div class="head-actions">
+                <Link class="btn" href="/admin/leads" title="Contact form requests">
+                    <Icon name="inbox" :size="15" /><span class="lbl">Requests</span><span v-if="newLeads" class="count">{{ newLeads }}</span>
+                </Link>
                 <button class="btn" :disabled="loading" title="Reload data" @click="refresh">
                     <Icon name="refresh" :size="15" :class="{ spin: loading }" /><span class="lbl">Refresh</span>
                 </button>

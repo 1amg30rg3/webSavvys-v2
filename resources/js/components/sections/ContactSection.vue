@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
+import ContactForm from '@/components/sections/ContactForm.vue';
 import { useScrollAnimation } from '@/composables/useScrollAnimation';
 
 defineProps<{
@@ -52,12 +53,7 @@ const { sectionRef } = useScrollAnimation();
                     </a>
                 </div>
             </div>
-            <div class="contact-cta" data-animate="fade-up" data-delay="200">
-                <a class="primary-button primary-button-large" :href="chatUrl" target="_blank" rel="noopener">
-                    {{ t('contact.chatCta') }}
-                    <font-awesome-icon :icon="['fas', 'arrow-right']" />
-                </a>
-            </div>
+            <ContactForm :chat-url="chatUrl" />
         </div>
     </section>
 </template>

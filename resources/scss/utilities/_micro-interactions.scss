@@ -66,10 +66,6 @@
     @include tilt-hover(translateX(8px));
 }
 
-.payment-card.is-tilt:hover {
-    @include tilt-hover(translateY(-8px));
-}
-
 // ── Stagger container ─────────────────────────────────────────────────────────
 // Add class `stagger-children` to a grid/list wrapper (inside a `useScrollAnimation`
 // section) and each direct child animates in with an automatic incremental delay.

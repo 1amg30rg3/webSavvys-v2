@@ -12,7 +12,6 @@ import FaqSection from '@/components/sections/FaqSection.vue';
 import FlowSection from '@/components/sections/FlowSection.vue';
 import GrowthSection from '@/components/sections/GrowthSection.vue';
 import HeroSection from '@/components/sections/HeroSection.vue';
-import PaymentSection from '@/components/sections/PaymentSection.vue';
 import PricingSection from '@/components/sections/PricingSection.vue';
 import ServicesSection from '@/components/sections/ServicesSection.vue';
 import { useLenis } from '@/composables/useLenis';
@@ -162,6 +161,8 @@ watch(locale, (value) => {
             <div class="container">
                 <HeroSection :chat-url="chatUrl" :locale-label="localeLabel" />
                 <div class="section-divider" data-animate="fade-in"></div>
+                <PricingSection :chat-url="chatUrl" />
+                <div class="section-divider" data-animate="fade-in"></div>
                 <AboutSection />
                 <div class="section-divider" data-animate="fade-in"></div>
                 <ServicesSection />
@@ -169,10 +170,6 @@ watch(locale, (value) => {
                 <GrowthSection />
                 <div class="section-divider" data-animate="fade-in"></div>
                 <FlowSection />
-                <div class="section-divider" data-animate="fade-in"></div>
-                <PaymentSection />
-                <div class="section-divider" data-animate="fade-in"></div>
-                <PricingSection />
                 <div class="section-divider" data-animate="fade-in"></div>
                 <FaqSection />
                 <div class="section-divider" data-animate="fade-in"></div>
