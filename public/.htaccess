@@ -28,3 +28,12 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+# credit.js is the "Built by WebSavvys" footer credit that client sites load from here.
+# Keep its cache short so an updated file reaches every client site within a day.
+# Source: the WebSavvys_Banner project (npm run sync:site).
+<IfModule mod_headers.c>
+    <Files "credit.js">
+        Header set Cache-Control "public, max-age=86400"
+    </Files>
+</IfModule>
